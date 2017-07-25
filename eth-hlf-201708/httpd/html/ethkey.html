@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ethkey</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://cdn.rawgit.com/ConsenSys/eth-lightwallet/ada8c674/dist/lightwallet.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+        // https://github.com/ConsenSys/eth-lightwallet
+        //
+        // https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
+        // Child key derivation (CKD) functions - hardened key
+        // bips/bip-0039.mediawiki at master · bitcoin/bips https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
+        // 
+        // eth-lightwallet : the default BIP32 HD derivation path is m/0'/0'/0'/i.
+        // Standardizing of HD wallet derivation paths (BIP32, BIP39, BIP44) · Issue #84 · ethereum/EIPs https://github.com/ethereum/EIPs/issues/84
+        // Default derivation path should be m/44'/60'/0'/0/n` · Issue #80 · ConsenSys/eth-lightwallet https://github.com/ConsenSys/eth-lightwallet/issues/80
+        //
+        // Vault password in eth-lightwallet is not the BIP39 passphrase.
+        // BIP39 passphrase = ""
+        // Mnemonic Code Converter https://iancoleman.github.io/bip39/
+        // iancoleman/bip39: A web tool for converting BIP39 mnemonic codes https://github.com/iancoleman/bip39
+        // 
+        function createKeystore(cb) {
+            var keyStore = lightwallet.keystore;
+            var hdPath = "m/44'/60'/0'/0"
+            var password = prompt('Enter password for encryption', 'password');
+            keyStore.createVault({
+                password: password,
+                hdPathString: hdPath  
+            }, function (err, ks) {
+                ks.keyFromPassword(password, function (err, pwDerivedKey) {
+                    if (err) throw err;
+                    ks.generateNewAddress(pwDerivedKey, 3);
+                    // m/44'/60'/0'/0/0
+                    // m/44'/60'/0'/0/1
+                    // m/44'/60'/0'/0/2
+                    var addresses = ks.getAddresses();
+                    var result = addresses.map(function(v,i,a){
+                        return {address:v, path:`m/44'/60'/0/${i}`}
+                    })
+                    var seed = ks.getSeed(pwDerivedKey)
+                    // keystore.exportPrivateKey(address, pwDerivedKey)
+                    cb({seed:seed,result:result})
+                    ks.passwordProvider = function (callback) {
+                        var pw = prompt("Please enter password", "Password");
+                        callback(null, pw);
+                    };
+                });
+            });
+        }
+        angular.module('myApp', [])
+            .controller('MyController', function ($scope, $http) {
+                createKeystore(function (r) {
+                    console.log(r)
+                    $scope.key = r
+                    $scope.$apply()
+                })
+                $scope.hello = 'world';
+            });
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="MyController">
+    <h1>ETH</h1>
+    <h2>Seed:</h2>
+    <h2>{{key.seed}}</h2>
+    <div ng-repeat="v in key.result">path={{v.path}}, address=0x{{v.address}}</div>
+    <hr>
+    <div>
+        <a href="https://iancoleman.github.io/bip39/">BIP39 - Mnemonic Code</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+version: '2'
+services:
+  httpd:
+    build: httpd
+    ports:
+      - "8080:80"
+    volumes:
+     - ./httpd/html:/var/www/html
+  db:
+    image: mariadb:10.1
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=db
+    ports:
+      - "8088:80"
