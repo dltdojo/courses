@@ -1,6 +1,19 @@
 ## Ethereum and HyperLedger Fabric Coding Workshop
 
-### 1. Setting up the development environment
+
+* 環境建置
+* 金鑰
+* 交易
+* 合約
+* truffle
+* ERC20
+* ENS
+* ICO
+
+
+### 1. Set up the development environment
+
+#### 1.1 Install software
 
 * Visual Studio Code https://code.visualstudio.com/download
 * VirtualBox https://www.virtualbox.org/
@@ -8,16 +21,18 @@
 * putty http://www.putty.org/
 * Google Chrome Browser https://www.google.com.tw/chrome/browser/desktop/index.html
 
-### Create a index page
+### 1.2 Start http service
 
-每個參與節點啟動8080http服務後，搜尋兩個對手測試方來列入mydata.json裡面ipTest欄位。
+* 啟動nginx為主要http服務 https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile
+* 編寫 mydata.json填入識別ID與對外可連結的IP
+* 每個參與節點啟動8080http服務後，搜尋兩個對手測試方來列入mydata.json裡面ipTest欄位。
 
 ```
 $ docker-compose up -d httpd
 $ namp -p 8080 --open 192.168.2.* 
 ```
 
-### Create a key pair
+### 1.3 Create a key pair
 
 * https://github.com/dltdojo/container/tree/master/dltdojo/ethnode
 
