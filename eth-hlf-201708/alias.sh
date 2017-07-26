@@ -1,1 +1,1 @@
-alias ddj='docker-compose exec ddjnode'
+alias ddj='docker-compose exec ddjethnode'

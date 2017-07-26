@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Ethkey</title>
+    <title>ETH-HLF-201708 課程</title>
     <style>
         body {
             width: 35em;
@@ -18,6 +18,8 @@
 <body ng-app="myApp" ng-controller="MyController">
     <h1>ETH-HLF-201708 課程</h1>
     <h3>{{mydata.id}} @ <a href="http://{{mydata.ip}}:8080/">{{mydata.ip}}</a></h3>
+    <h3>ADDRESS: {{mydata.ethereum.address}}</h3>
+    <h3><a href="https://rinkeby.etherscan.io/address/{{mydata.ethereum.address}}">Ethereum Account</a></h3>
     <h4>其他參與者:
         <span ng-repeat="ip in mydata.ipTest">
       <a href="http://{{ip}}:8080/" target="_blank">{{ip}}</a> | 

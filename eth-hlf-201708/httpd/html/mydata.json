@@ -6,6 +6,7 @@
         "192.168.2.106"
     ],
     "ethereum": {
-        "rinkeby": "0x0000xxxx00"
+        "address": "0x1b2278342f96385d79cb320b5dd49d6db571e3fe",
+        "key": "b27e0750b7ee97586b85e9f3021f3b0a3a8b75de338dc60dd57b0bb66707ef82"
     }
 }

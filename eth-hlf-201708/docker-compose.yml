@@ -1,10 +1,10 @@
 version: '2'
 services:
-  ddjnode:
-    image: dltdojo/node:8
+  ddjethnode:
+    image: dltdojo/ethnode:8.a.1
     command: tail -f /dev/null
     volumes:
-      - ./ddjnode:/opt/ddjnode
+      - ./ddjapp:/opt/ddj/app
   httpd:
     build: httpd
     ports:

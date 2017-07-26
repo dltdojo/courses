@@ -8,18 +8,31 @@
 * putty http://www.putty.org/
 * Google Chrome Browser https://www.google.com.tw/chrome/browser/desktop/index.html
 
-### Create a key 
+### Create a index page
+
+每個參與節點啟動8080http服務後，搜尋兩個對手測試方來列入mydata.json裡面ipTest欄位。
 
 ```
 $ docker-compose up -d httpd
-$ docker-compose up -d ddjnode
-$ souce alias.sh
-$ ddjnode openssl version
-OpenSSL 1.0.2k  26 Jan 2017
-$ ddj bash
-# cd /opt/ddjnode
-# openssl ecparam -list_curves
+$ namp -p 8080 --open 192.168.2.* 
+```
 
+### Create a key pair
+
+* https://github.com/dltdojo/container/tree/master/dltdojo/ethnode
+
+```
+$ docker-compose up -d ddjethnode
+$ docker-compose exec ddjethnode bash
+bash-4.3# cd app/
+bash-4.3# ../subapp/eckey.sh
+
+// ===========================
+$ openssl version
+OpenSSL 1.0.2k  26 Jan 2017
+
+// ===========================
+$ openssl ecparam -list_curves
   secp112r1 : SECG/WTLS curve over a 112 bit prime field
   secp112r2 : SECG curve over a 112 bit prime field
   secp128r1 : SECG curve over a 128 bit prime field
@@ -108,65 +121,94 @@ $ ddj bash
   brainpoolP512r1: RFC 5639 curve over a 512 bit prime field
   brainpoolP512t1: RFC 5639 curve over a 512 bit prime field
 
-
-# openssl ecparam -name secp256k1 -genkey -out secp256k1.key.pem
-# openssl ecparam -name prime256v1 -genkey -out prime256v1.key.pem
-# openssl ec -text -in secp256k1.key.pem 
+// ===========================
+$ openssl ecparam -name secp256k1 -genkey -out secp256k1.key.pem
+$ openssl ec -text -in secp256k1.key.pem
 read EC key
 Private-Key: (256 bit)
 priv:
-    57:41:f0:59:66:18:12:10:36:a2:b3:75:9b:93:1d:
-    00:1c:8c:60:94:15:8e:55:dd:f4:70:84:1f:25:ca:
-    47:d6
+    00:ae:95:07:0d:72:d7:db:3b:34:93:29:38:26:89:
+    57:98:72:80:d4:d1:a3:d5:9e:b0:68:3b:3b:ef:7a:
+    8a:6e:ad
 pub:
-    04:51:db:b7:a6:10:ef:43:a5:e9:6c:3f:22:80:a5:
-    e9:c6:e0:d5:9b:89:82:bc:fa:35:1b:0c:7d:44:92:
-    f5:42:62:bd:79:0f:ff:8f:84:36:bc:62:3f:f2:05:
-    52:0e:4d:75:11:a0:36:1a:3a:a7:5b:77:4c:fb:73:
-    a0:1a:98:b3:a4
+    04:35:46:4b:e3:e2:5f:97:de:7c:a1:db:3c:4a:dd:
+    65:3f:f4:3b:94:a6:6e:7a:a6:6f:46:7c:91:3d:17:
+    67:38:d8:6d:c4:9c:29:22:3a:0b:48:3c:0b:03:b0:
+    9b:cd:56:ea:50:80:9b:63:c8:d3:eb:58:9a:c3:ad:
+    74:9c:c8:b2:99
 ASN1 OID: secp256k1
 writing EC key
 -----BEGIN EC PRIVATE KEY-----
-MHQCAQEEIFdB8FlmGBIQNqKzdZuTHQAcjGCUFY5V3fRwhB8lykfWoAcGBSuBBAAK
-oUQDQgAEUdu3phDvQ6XpbD8igKXpxuDVm4mCvPo1Gwx9RJL1QmK9eQ//j4Q2vGI/
-8gVSDk11EaA2GjqnW3dM+3OgGpizpA==
+MHQCAQEEIK6VBw1y19s7NJMpOCaJV5hygNTRo9WesGg7O+96im6toAcGBSuBBAAK
+oUQDQgAENUZL4+Jfl958ods8St1lP/Q7lKZueqZvRnyRPRdnONhtxJwpIjoLSDwL
+A7CbzVbqUICbY8jT61iaw610nMiymQ==
 -----END EC PRIVATE KEY-----
 
-# openssl ec -text -in prime256v1.key.pem
+// ===========================
+$ openssl ecparam -name prime256v1 -genkey -out prime256v1.key.pem
+$ openssl ec -text -in prime256v1.key.pem
 read EC key
 Private-Key: (256 bit)
 priv:
-    00:e5:35:92:bd:d0:f6:31:ea:ee:ac:e5:07:8a:cb:
-    13:c7:51:0d:a0:ab:d3:32:d3:fb:97:21:ae:94:22:
-    a7:bc:9c
+    40:58:27:b0:15:e9:67:5a:07:91:13:fd:fc:14:70:
+    b9:b9:cd:4f:dc:7c:5c:79:b6:d9:fb:19:df:05:8b:
+    bb:a3
 pub:
-    04:c5:0a:ec:e0:aa:4e:eb:e9:57:d5:aa:fb:8d:f0:
-    45:c4:09:6b:cf:ed:e7:36:67:41:d0:a7:92:63:96:
-    ea:f2:ce:c4:95:ad:40:37:c8:36:4d:2e:77:52:07:
-    68:3c:bf:0e:cb:56:8e:bc:d2:91:b1:e6:c5:fa:58:
-    cb:2e:f5:49:92
+    04:0d:e0:bc:2f:a6:1a:97:b4:9d:7a:5f:65:17:92:
+    1f:aa:a0:e4:da:36:24:6e:78:c4:a5:b4:c3:bf:7b:
+    e3:b3:b5:c3:05:f5:a5:12:d2:75:d2:03:e9:1e:22:
+    7a:97:83:fd:aa:f1:42:61:7f:a9:ae:d1:24:e2:1f:
+    98:92:34:db:f3
 ASN1 OID: prime256v1
 NIST CURVE: P-256
 writing EC key
 -----BEGIN EC PRIVATE KEY-----
-MHcCAQEEIOU1kr3Q9jHq7qzlB4rLE8dRDaCr0zLT+5chrpQip7ycoAoGCCqGSM49
-AwEHoUQDQgAExQrs4KpO6+lX1ar7jfBFxAlrz+3nNmdB0KeSY5bq8s7Ela1AN8g2
-TS53UgdoPL8Oy1aOvNKRsebF+ljLLvVJkg==
+MHcCAQEEIEBYJ7AV6WdaB5ET/fwUcLm5zU/cfFx5ttn7Gd8Fi7ujoAoGCCqGSM49
+AwEHoUQDQgAEDeC8L6Yal7Sdel9lF5IfqqDk2jYkbnjEpbTDv3vjs7XDBfWlEtJ1
+0gPpHiJ6l4P9qvFCYX+prtEk4h+YkjTb8w==
 -----END EC PRIVATE KEY-----
 
-# ./pem2json.sh secp256k1.key.pem
-# cat pub | keccak-256sum -x -l | tr -d ' -' | tail -c 41 > address
-# geth account import priv
+// ===========================
+read EC key
+read EC key
+{
+  "pem": "secp256k1.key.pem",
+  "pubkey": "35464be3e25f97de7ca1db3c4add653ff43b94a66e7aa66f467c913d176738d86dc49c29223a0b483c0b03b09bcd56ea50809b63c8d3eb589ac3ad749cc8b299",
+  "privkey": "ae95070d72d7db3b34932938268957987280d4d1a3d59eb0683b3bef7a8a6ead"
+}
+
+```
+
+### copy pem
+
+```
+bash-4.3# pwd
+/opt/ddj/app
+bash-4.3# tree .
+.
+├── key2address.js
+├── prime256v1.key.pem
+├── secp256k1.key.pem
+└── secp256k1.key.pem.json
+
+0 directories, 4 files
+
+bash-4.3# node key2address.js > mykey.json
+bash-4.3# exit
+exit
+```
+
+### import private key
+
+```
+$ geth account import priv
 Your new account is locked with a password. Please give a password. Do not forget this password.
 Passphrase: 
 Repeat passphrase: 
 Address: {0bed7abd61247635c1973eb38474a2516ed1d884}
-
-# keyethereum keyfile
-
-$ namp -p 8080 --open 192.168.2.* 
 ```
 
+* 為何需要自行編譯 ethnode docker image
 * Create full Ethereum wallet, keypair and address https://kobl.one/blog/create-full-ethereum-keypair-and-address/
 * ethereumjs/keythereum: Create, import and export Ethereum keys https://github.com/ethereumjs/keythereum
 * ethereumjs/ethereumjs-util: A collection of utility functions for Ethereum https://github.com/ethereumjs/ethereumjs-util
