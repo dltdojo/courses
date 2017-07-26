@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ethkey</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://cdn.rawgit.com/ConsenSys/eth-lightwallet/ada8c674/dist/lightwallet.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="MyController">
+    <h1>ETH-HLF-201708 課程</h1>
+    <h3>{{mydata.id}} @ <a href="http://{{mydata.ip}}:8080/">{{mydata.ip}}</a></h3>
+    <h4>其他參與者:
+        <span ng-repeat="ip in mydata.ipTest">
+      <a href="http://{{ip}}:8080/" target="_blank">{{ip}}</a> | 
+    </span>
+    </h4>
+    <hr>
+    <h2>LightWallet <button ng-click="ethkey()">Generate..</button></h2>
+    <h2>Seed:</h2>
+    <h2>{{key.seed}}</h2>
+    <div ng-repeat="v in key.result">
+        <h4>path={{v.path}}</h4>
+        address=0x{{v.address}}, key=0x{{v.key}}
+    </div>
+    <hr>
+    <div>
+        <a href="https://iancoleman.github.io/bip39/">BIP39 - Mnemonic Code</a>
+    </div>
+</body>
+
+</html>

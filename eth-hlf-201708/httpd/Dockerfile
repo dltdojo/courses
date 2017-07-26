@@ -1,3 +1,4 @@
-FROM php:7.0-apache
-RUN docker-php-ext-install pdo_mysql
-# ADD index.php info.php backend.php frontend.html api.php /var/www/html/
+FROM nginx:stable-alpine
+# https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile
+# EXPOSE 80
+RUN apk --update --no-cache add bash curl jq git

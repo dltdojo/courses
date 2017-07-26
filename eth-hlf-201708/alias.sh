@@ -1,0 +1,1 @@
+alias ddj='docker-compose exec ddjnode'

@@ -1,5 +1,11 @@
 {
-    "ethereum":{
+    "id": "BLUEAPPLE",
+    "ip": "192.168.2.106",
+    "ipTest": [
+        "192.168.2.100",
+        "192.168.2.106"
+    ],
+    "ethereum": {
         "rinkeby": "0x0000xxxx00"
     }
 }
