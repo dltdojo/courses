@@ -1,13 +1,15 @@
 ## Ethereum and HyperLedger Fabric Coding Workshop
 
-* 1 開發環境建置與Ethereum介紹
+* 1 開發環境與Ethereum介紹練習
   * Docker
   * VirtualBox
-  * Ethereum tutorial
-  * Send ether
-  * Create a smart contract
-* 2 hyperledger fabric介紹
-  * Send token
+  * Ethereum介紹
+  * 收發乙太幣資產
+  * 建立智能合約
+  * 執行智能合約
+* 2 hyperledger fabric介紹練習
+  * 架構介紹
+  * 收發資產
   * Composer playground
 * 3 加密貨幣與區塊鏈基礎
   * hash
@@ -23,6 +25,7 @@
     * prime256v1
     * signature
 * 4 Ethereum開發
+  * Private PoA chain
   * wallet
     * MetaMask
     * MyEtherWallet
@@ -37,7 +40,7 @@
   * Multisig Contract
   * The DAO Contract
   * Ethereum Name Service Contract
-  * ICO contract
+  * ICO Contract
 * 6 Hyperledger Fabric 開發
   * Fabric CA
   * chaincode
