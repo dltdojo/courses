@@ -1,10 +1,5 @@
-pragma solidity ^0.4.11;
-//
-// https://ethereum.github.io/browser-solidity/
-// import "github.com/dltdojo/courses/solidity/T01_Storage.sol"
-// 
-// http://solidity.readthedocs.io/en/develop/introduction-to-smart-contracts.html
-// 
+pragma solidity ^0.4.14;
+ 
 contract Foo {
   uint storedData;
   function set(uint x) {
