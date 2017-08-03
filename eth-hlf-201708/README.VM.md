@@ -1,6 +1,6 @@
-## Virtual VM
+# VirtualBox VM
 
-* VirtualBox DLDOJO-S1 OVA https://github.com/dltdojo/container/blob/master/dltdojo/VirtualBox.md
+## Build a new device (Export OVA)
 
 ### 1. download ubuntu server 16.04.2 LTS ISO file
 
@@ -52,6 +52,8 @@ $ npm -v
 
 ### 5. install smb
 
+* Windows, Linux與 OS X的檔案分享方法 (File Sharing Methods among Windows, Linux and OS X)  http://www.lijyyh.com/2016/11/windows-linux-os-x.html
+
 ```
 $ sudo apt-get install -y build-essential samba
 $ sudo smbpasswd -a dltdojo
@@ -66,3 +68,7 @@ read only = no
 
 $ sudo service smbd restart
 ```
+
+## 預先製作OVA
+
+* VirtualBox DLDOJO-S1 OVA https://github.com/dltdojo/container/blob/master/dltdojo/VirtualBox.md

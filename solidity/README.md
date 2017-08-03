@@ -26,6 +26,8 @@ contract NMyFooGet is FooPublic {
 
 ### Example T02 Library
 
+* contract FooLibCall
+
 ```
 pragma solidity ^0.4.14;
 import "github.com/dltdojo/courses/solidity/T02_Library.sol";

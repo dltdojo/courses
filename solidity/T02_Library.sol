@@ -33,6 +33,7 @@ contract Foo {
 
 // solc will insert the library addresses to the placeholder __browser/Foo.sol:FooLib__
 // https://ethereum.stackexchange.com/questions/6927/what-are-the-steps-to-compile-and-deploy-a-library-in-solidity
+// Link an already-deployed library to a contract or multiple contracts http://truffleframework.com/docs/getting_started/migrations#deployer-link-library-destinations-
 contract FooLibCall {
   function cpow2(uint x) returns (uint){
       return FooLib.pow2(x);
