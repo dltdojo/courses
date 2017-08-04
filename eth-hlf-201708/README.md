@@ -4,9 +4,9 @@
   * Docker
   * VirtualBox
   * Ethereum介紹
-  * 收發乙太幣資產
-  * 建立智能合約
-  * 執行智能合約
+  * 收發乙太幣資產 MyEtherWallet/MetaMask/Rinkeby/Kovan
+  * 建立智能合約 Rinkeby
+  * 執行智能合約 Rinkeby
 * 2 hyperledger fabric介紹練習
   * 架構介紹
   * 收發資產
@@ -30,9 +30,9 @@
     * MetaMask
     * MyEtherWallet
   * Library
-    * bitcore-lib
     * web3
     * ethereumjs
+    * bitcore-lib
   * Truffle
 * 5 Solidity智能合約實作
   * Smart Contract

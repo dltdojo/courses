@@ -1,0 +1,20 @@
+version: '2'
+services:
+  ethnode1:
+    image: dltdojo/ethnode:6.a.2
+    command: /opt/geth/start.sh
+    ports:
+      - "9545:8545"
+      - "9546:8546"
+  ethnode2:
+    image: dltdojo/ethnode:6.a.2
+    command: /opt/geth/testrpc.sh
+    ports:
+      - "8545:8545"
+      - "8546:8546"
+  httpd:
+    image: nginx:stable-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./httpd/html:/usr/share/nginx/html
