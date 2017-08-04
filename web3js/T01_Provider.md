@@ -8,7 +8,7 @@
 * http provider 
 * websocket provider
 * ipc provider
-* The HTTP provider is deprecated, as it won’t work for subscriptions. http://web3js.readthedocs.io/en/1.0/web3-eth.html#providers
+* The HTTP provider is deprecated. http://web3js.readthedocs.io/en/1.0/web3-eth.html#providers
 
 ```
 $ docker-compose up -d ethnode2
@@ -82,6 +82,8 @@ Accounts {
 ```
 
 ## web3 1.0.beta15 in browser
+
+* Can't connect to remote node when using WebSockets with Javascript in v1.0.0-beta.13 (o is not a constructor) · Issue #960 · ethereum/web3.js https://github.com/ethereum/web3.js/issues/960
 
 * Google chrome http://DEVIP:8080/
 

@@ -10,9 +10,13 @@
             margin: 0 auto;
         }
 </style>
- <script src="https://cdn.rawgit.com/ethereum/web3.js/1.0/dist/web3.min.js"></script>
+ <!-- <script src="https://cdn.rawgit.com/ethereum/web3.js/1.0/dist/web3.min.js"></script> -->
+ <!-- https://github.com/ethereum/web3.js/issues/960 -->
+ <script src="web3.js"></script>
  <script type="text/javascript">
-    var web3 = new Web3("http://"+window.location.hostname+":8545");
+    // the http provider is deprecated.
+    // var web3 = new Web3("http://"+window.location.hostname+":8545");
+    var web3 = new Web3("ws://"+window.location.hostname+":8546");
   </script>
 </head>
 <body>
