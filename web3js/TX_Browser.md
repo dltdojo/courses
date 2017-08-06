@@ -1,15 +1,15 @@
 * https://github.com/ethereum/web3.js/
 
-### build web3.js for browser 
+### build web3.js 0.20.1 for browser 
 ```
 $ git clone https://github.com/ethereum/web3.js.git
 $ cd web3.js
 $ npm i 
 $ npm run-script build
-
 ```
 
 ### build web3.js 1.0 for browser 
+
 ```
 $ git clone https://github.com/ethereum/web3.js.git
 $ cd web3.js

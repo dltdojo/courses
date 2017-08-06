@@ -11,13 +11,22 @@
   * 雙重支付問題double-spend problem
   * 智能合約如何運作?
   * 什麼是以太坊虛擬機器?
-  * 雜湊值、公私金鑰概念與Merkle tree
+  * hash
+    * sha256
+    * ripemd160
+    * keccak
+    * sha3
+    * hash256
+    * hash160
+  * Elliptic-curve keys
+    * openssl
+    * secp256k1
+    * prime256v1
+    * signature
 * 3 以太坊基礎
   * 以太坊的生態圈
   * DApps分散式應用程式
-  * DAOs分散式組織
-  * Mist錢包與應用程式
-  * MetaMask錢包與應用程式
+  * Mist/MetaMask錢包應用程式
   * 以太幣Ether
   * 帳號account
   * go-ethereum節點程式
