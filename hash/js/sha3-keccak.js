@@ -44,6 +44,7 @@ function calcRlpHash() {
 
 }
 
+// Rename/alias sha3 to minimize confusion with SHA-3 standard · Issue #59 · ethereum/EIPs https://github.com/ethereum/EIPs/issues/59
 // https://zh.wikipedia.org/wiki/SHA-3
 // https://www.di-mgt.com.au/sha_testvectors.html
 // SHA-256	ba7816bf 8f01cfea 414140de 5dae2223 b00361a3 96177a9c b410ff61 f20015ad
