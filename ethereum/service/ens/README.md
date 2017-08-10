@@ -6,8 +6,19 @@ ENS提供對應到特定名稱的合約服務，ENS合約中的名稱需要轉�
 
 * parity 1.7.0 + chrome parity extension
 * https://registrar.ens.domains/#dltdojo
+
+#### tx : startAuctionAndBid
+
 * Ethereum Transaction 0xcaebf59ca2bc67a83106e0c8819b8a6f4e2e8d023d9a38f04a32e0fd2a4a3d90 https://etherscan.io/tx/0xcaebf59ca2bc67a83106e0c8819b8a6f4e2e8d023d9a38f04a32e0fd2a4a3d90
 * function startAuctionsAndBid(bytes32[] hashes, bytes32 sealedBid) payable https://github.com/ethereum/ens/blob/master/contracts/HashRegistrarSimplified.sol#L369
+
+#### tx : unsealBid
+
+* unsealBid(bytes32 _hash, uint256 _value, bytes32 _salt) https://etherscan.io/tx/0xe600f9ed4c86a4a16097ad94a2d7cc0028fcb4a8db3ba4998853a14e4fc85011
+
+#### tx : finalizeAuction
+
+* TODO
 
 ### references
 

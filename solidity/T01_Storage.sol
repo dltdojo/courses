@@ -18,6 +18,7 @@ The keyword public automatically generates a function that allows you to access 
 */
 contract FooPublic is Foo {
   uint public storedData;
+  // function storedData() returns (uint) { return storedData; }
 }
 
 contract FooPublicPow2 is FooPublic {
