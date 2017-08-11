@@ -4,12 +4,12 @@
 
 ```
 $ alias ethnode='docker run -it --rm -v $(pwd)/js:/opt/ddj/js dltdojo/ethnode:6.a.2 node'
-$ ethnode js/key.js
+$ ethnode js/eckey.js
 ```
 
 ### node
 
 ```
 $ npm i 
-$ node js/key.js
+$ node js/eckey.js
 ```

@@ -1,1 +1,0 @@
-* Elliptic curve cryptography - Wikipedia https://en.wikipedia.org/wiki/Elliptic_curve_cryptography
