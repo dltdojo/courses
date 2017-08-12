@@ -4,21 +4,46 @@ ENS提供對應到特定名稱的合約服務，ENS合約中的名稱需要轉�
 
 ### dltdojo.eth
 
+* Ethereum Name Service Lookup https://etherscan.io/enslookup?q=dltdojo.eth
+* Ethereum Account https://etherscan.io/address/dltdojo.eth
 * parity 1.7.0 + chrome parity extension
 * https://registrar.ens.domains/#dltdojo
 
-#### tx : startAuctionAndBid
+#### tx1 : startAuctionAndBid
 
 * Ethereum Transaction 0xcaebf59ca2bc67a83106e0c8819b8a6f4e2e8d023d9a38f04a32e0fd2a4a3d90 https://etherscan.io/tx/0xcaebf59ca2bc67a83106e0c8819b8a6f4e2e8d023d9a38f04a32e0fd2a4a3d90
 * function startAuctionsAndBid(bytes32[] hashes, bytes32 sealedBid) payable https://github.com/ethereum/ens/blob/master/contracts/HashRegistrarSimplified.sol#L369
 
-#### tx : unsealBid
+#### tx2 : unsealBid
 
 * unsealBid(bytes32 _hash, uint256 _value, bytes32 _salt) https://etherscan.io/tx/0xe600f9ed4c86a4a16097ad94a2d7cc0028fcb4a8db3ba4998853a14e4fc85011
 
-#### tx : finalizeAuction
+#### tx3 : finalizeAuction
 
-* TODO
+* Function: finalizeAuction(bytes32 _hash)
+* https://github.com/ethereum/ens/blob/master/contracts/HashRegistrarSimplified.sol#L458
+* https://etherscan.io/tx/0x60d3e31e92bae8c2822fd14f258ca59bd4dcad5d1666b0977917b878697a7755
+
+#### tx4 SET REVERSE RECORD 
+
+This allows someone looking at 0x00c6d844075977340d0948e8068ee45ae64efa0a to know it wants to mainly be identified with dltdojo.eth.
+
+* Function: setName(string DogName)
+* https://github.com/ethereum/ens/blob/master/contracts/ReverseRegistrar.sol#L123
+* https://etherscan.io/tx/0x5c1d875ed64d77eb91f8d29bf8196599caabb29291742130e9ca308511581bc1
+
+#### tx5 Function: setResolver(bytes32 node, address resolver)
+
+A resolver is a contract that can answer queries about your domain. You can choose any resolver but at the moment we deployed a basic resolver that can answer about ethereum addresses and content hashes.
+
+* Function: setResolver(bytes32 node, address resolver)
+* https://etherscan.io/tx/0x67453430deb342cd5ead3aaeba2cddcd98875c31a8b6b38e25c7472483baed64
+
+#### tx6 MAIN ETHEREUM ADDRESS
+
+* Function: setAddr(bytes32 node, address addr)
+* https://etherscan.io/tx/0x72dc6cb8bf4ceada4401b6a8c4c876796703d8c776f0c8b576bfec463ee5b0b7
+* https://github.com/ethereum/ens/blob/master/contracts/PublicResolver.sol#L85
 
 ### references
 
