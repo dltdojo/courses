@@ -1,6 +1,6 @@
 Introduction — ENS 0.1 documentation http://docs.ens.domains/en/latest/introduction.html
 
-ENS提供對應到特定名稱的合約服務，ENS合約中的名稱需要轉入以太幣鎖定取得一年所有權，所有人可以添加額外資訊、建立子網域名稱或出租轉賣等。鎖定程序需要五天競標進行，得標後燒毀0.01 ether外其餘退回。
+ENS提供對應到特定名稱的合約服務，ENS合約中的名稱需要轉入以太幣鎖定取得一年所有權，所有人可以添加額外資訊、建立子網域名稱或出租轉賣等。鎖定程序需要五天競標進行，未得標燒毀0.5%外其餘退回。
 
 ### dltdojo.eth
 
@@ -24,22 +24,19 @@ ENS提供對應到特定名稱的合約服務，ENS合約中的名稱需要轉�
 * https://github.com/ethereum/ens/blob/master/contracts/HashRegistrarSimplified.sol#L458
 * https://etherscan.io/tx/0x60d3e31e92bae8c2822fd14f258ca59bd4dcad5d1666b0977917b878697a7755
 
-#### tx4 SET REVERSE RECORD 
-
-This allows someone looking at 0x00c6d844075977340d0948e8068ee45ae64efa0a to know it wants to mainly be identified with dltdojo.eth.
+#### tx4 setName 
 
 * Function: setName(string DogName)
 * https://github.com/ethereum/ens/blob/master/contracts/ReverseRegistrar.sol#L123
 * https://etherscan.io/tx/0x5c1d875ed64d77eb91f8d29bf8196599caabb29291742130e9ca308511581bc1
 
-#### tx5 Function: setResolver(bytes32 node, address resolver)
-
-A resolver is a contract that can answer queries about your domain. You can choose any resolver but at the moment we deployed a basic resolver that can answer about ethereum addresses and content hashes.
+#### tx5 setResolver
 
 * Function: setResolver(bytes32 node, address resolver)
+* https://github.com/ethereum/ens/blob/master/contracts/ENS.sol#L80
 * https://etherscan.io/tx/0x67453430deb342cd5ead3aaeba2cddcd98875c31a8b6b38e25c7472483baed64
 
-#### tx6 MAIN ETHEREUM ADDRESS
+#### tx6 setAddr
 
 * Function: setAddr(bytes32 node, address addr)
 * https://etherscan.io/tx/0x72dc6cb8bf4ceada4401b6a8c4c876796703d8c776f0c8b576bfec463ee5b0b7

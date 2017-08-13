@@ -1,8 +1,13 @@
 // https://github.com/indutny/elliptic
 const EC = require('elliptic').ec
-
-const ethUtils = require('ethereumjs-util')
+// https://github.com/ethereumjs/ethereumjs-util
+const ethUtil = require('ethereumjs-util')
 const secp256k1 = require('secp256k1')
+const KEY1 = '0000000000000000000000000000000000000000000000000000000000000001'
+const bitcore = require('bitcore-lib');
+const bmessage = require('bitcore-message');
+
+// Elliptic Curve Digital Signature Algorithm - Wikipedia https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
 // ethUtils https://github.com/ethereumjs/ethereumjs-util
 // http://davidederosa.com/basic-blockchain-programming/elliptic-curve-keys/
 // SafeCurves: Introduction https://safecurves.cr.yp.to/
@@ -17,51 +22,47 @@ const secp256k1 = require('secp256k1')
 // bitcoin
 // ethereum 
 // ripple https://github.com/ripple/rippled/tree/master/src/secp256k1
-// zcash switch from ECDSA to Ed25519 https://github.com/zcash/zcash/issues/715
-// hyperledger sawtooth https://github.com/hyperledger/sawtooth-core/blob/master/core/setup.cfg
-function ellipticModuleSecp256k1() {
+function calcSecp256k1(msg) {
     // private Key 0x01
     // public keys are 64 bytes (uncompressed form) or 32 bytes (compressed form) long plus a 1-byte prefix.
     // public key in a compressed format
     // secp256k1 elliptic curve y*y == x*x*x + 7
-    // https://github.com/cryptocoinjs/secp256k1-node/blob/master/lib/js/ecpoint.js#L46
-    var ec256k1 = new EC('secp256k1')
-    var eckeys = ec256k1.keyFromPrivate('0000000000000000000000000000000000000000000000000000000000000001', 'hex');
+    const ec256k1 = new EC('secp256k1')
+    var eckeys = ec256k1.keyFromPrivate(KEY1, 'hex');
     var pubKey = eckeys.getPublic()
+    var msgHash = ethUtil.sha256(msg)
+    var signature = eckeys.sign(msgHash)
+    var signature2 = eckeys.sign(msgHash)
     return {
+        msgHash: msgHash.toString('hex'),
         privateKey: eckeys.getPrivate().toString('hex'),
-        publicKey: { x: pubKey.x, y: pubKey.y }
+        signature: signature,
+        signature2: signature2,
+        publicKey: { hex: pubKey.encode('hex'), x: pubKey.x, y: pubKey.y }
     }
 }
 
 // Hyperledger Fabric P256
 // ECDSA-SHA256-P256 https://github.com/hyperledger/fabric/search?utf8=%E2%9C%93&q=ECDSA+elliptic&type=Code
-function ellipticModuleP256() {
+function calcP256(msg) {
     var ecP256 = new EC('p256')
     // private Key 0x01
-    var keys = ecP256.keyFromPrivate('0000000000000000000000000000000000000000000000000000000000000001', 'hex');
+    var keys = ecP256.keyFromPrivate(KEY1, 'hex');
     var pubKey = keys.getPublic()
+    var msgHash = ethUtil.sha256(msg)
+    var signature = keys.sign(msgHash)
+    var signature2 = keys.sign(msgHash)
     return {
+        msgHash: msgHash.toString('hex'),
         privateKey: keys.getPrivate().toString('hex'),
-        publicKey: { x: pubKey.x, y: pubKey.y }
+        signature: signature,
+        publicKey: { hex: pubKey.encode('hex'), x: pubKey.x, y: pubKey.y }
     }
-}
-
-// ed25519
-// EdDSA-SHA512-Ed25519 
-// chain core https://github.com/chain/chain/tree/main/crypto/ed25519
-// monero https://github.com/monero-project/monero/blob/master/src/crypto/crypto_ops_builder/crypto_sign.h
-// corda https://github.com/corda/corda/search?utf8=%E2%9C%93&q=EdDSA
-// ripple https://github.com/ripple/rippled/tree/master/src/ed25519-donna
-// Curves with a Twist | Ripple https://ripple.com/dev-blog/curves-with-a-twist/
-// Hyperledger iroha https://github.com/hyperledger/iroha-android/blob/master/iroha-android/src/main/java/io/soramitsu/irohaandroid/security/KeyGenerator.java
-function ed25519() {
-
 }
 
 function secp256k1Module() {
     // private Key 0x01
-    var privKey = Buffer.from('0000000000000000000000000000000000000000000000000000000000000001', 'hex')
+    var privKey = Buffer.from(KEY1, 'hex')
     var pubKey = secp256k1.publicKeyCreate(privKey)
     var uncompressedPubKey = secp256k1.publicKeyConvert(pubKey, false)
     return {
@@ -71,11 +72,72 @@ function secp256k1Module() {
     }
 }
 
+// ret.v = sig.recovery + 27
+// https://github.com/ethereumjs/ethereumjs-util/blob/master/index.js#L334
+// Low S values in signatures 
+// https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki#low-s-values-in-signatures
+// low S values 
+// https://github.com/ethereumjs/ethereumjs-util/blob/master/index.js#L522
+// a.cmp(b) return 1 (a>b) https://github.com/indutny/bn.js/
+// new BN(s).cmp(SECP256K1_N_DIV_2) === 1 
+function ethSign(msg) {
+    var ecprivkey = Buffer.from(KEY1, 'hex')
+    var ecpubkey = ethUtil.privateToPublic(ecprivkey)
+    var msgHash = ethUtil.sha256(msg)
+    var sig = ethUtil.ecsign(msgHash, ecprivkey)
+    var sig2 = ethUtil.ecsign(msgHash, ecprivkey)
+    return {
+        msgHash: msgHash.toString('hex'),
+        publickey: ecpubkey.toString('hex'),
+        r: sig.r.toString('hex'),
+        s: sig.s.toString('hex'),
+        r2: sig2.r.toString('hex'),
+        s2: sig2.s.toString('hex'),
+        v: sig.v
+    }
+}
+
+function ethEcrecover(msg) {
+    var ecprivkey = Buffer.from(KEY1, 'hex')
+    var ecpubkey = ethUtil.privateToPublic(ecprivkey)
+    // https://github.com/ethereumjs/ethereumjs-util/blob/master/index.js#L348
+    var ethMessageHash = ethUtil.hashPersonalMessage(Buffer.from(msg))
+    var sig = ethUtil.ecsign(ethMessageHash, ecprivkey)
+    // hash, v , r,  s 
+    var recoverPublicKey = ethUtil.ecrecover(ethMessageHash, sig.v, sig.r, sig.s)
+    return {
+        msgHash: ethMessageHash.toString('hex'),
+        r: sig.r.toString('hex'),
+        s: sig.s.toString('hex'),
+        v: sig.v,
+        publickey: ecpubkey.toString('hex'),
+        recoverPublicKey: recoverPublicKey.toString('hex')
+    }
+}
+
+// random k
+// https://github.com/bitpay/bitcore-message/blob/master/lib/message.js#L50
+function bitcoinMessage(msg) {
+    var privateKey = bitcore.PrivateKey(Buffer.from(KEY1, 'hex'))
+    var publicKey = privateKey.toPublicKey()
+    var signature = bmessage(msg).sign(privateKey)
+    var signature2 = bmessage(msg).sign(privateKey)
+    return {
+        publicKey: publicKey.toString(),
+        signature: signature,
+        signature2: signature2
+    }
+}
+
+var msg = 'abc'
 var result = {
     curveSecp256k1: "y*y == x*x*x + 7",
     moduleSecp256k1: secp256k1Module(),
-    moduleEllipticSecp256k1: ellipticModuleSecp256k1(),
-    p256: ellipticModuleP256(),
+    secp256k1: calcSecp256k1(msg),
+    p256: calcP256(msg),
+    bitcoinMessage: bitcoinMessage(msg),
+    ethsign: ethSign(msg),
+    ethEcrecover: ethEcrecover(msg)
 }
 
 console.log(JSON.stringify(result, null, 2))
