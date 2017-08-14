@@ -1,16 +1,16 @@
-pragma solidity ^0.4.14;
+pragma solidity ^0.4.15;
 
-// Contracts — Solidity 0.4.15 documentation http://solidity.readthedocs.io/en/develop/contracts.html
-// Visibility and Getters
-// message call v.s. external call 
-// Functions can be specified as being external, public, internal or private, 
-// where the default is public. For state variables, external is not possible and the default is internal.
+// solidity - Difference between require and assert and the difference between revert and throw - Ethereum Stack Exchange 
+// https://ethereum.stackexchange.com/questions/15166/difference-between-require-and-assert-and-the-difference-between-revert-and-thro/
+
 contract Foo {
-  uint public storedData;
-  function set(uint x) {
-    storedData = x;
+  function mul2Require(uint amount) constant returns (uint) {
+    require(amount < 100);
+    return amount*2;
   }
-  function pow2(unit x) return (uint){
-      return x**2;
+
+    function mul2Assert(uint amount)  constant returns (uint) {
+    assert(amount < 100);
+    return amount*2;
   }
 }
