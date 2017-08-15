@@ -12,3 +12,9 @@ $ bitcoin-cli generate 101
 $ bitcoin-cli sendtoaddress 12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX 20.09
 $ bitcoin-cli generate 1
 ```
+
+
+### Rent-seeking
+
+* Rent-seeking tokens vs non-rent seeking tokens - CoinDesk  https://www.coindesk.com/100-million-pantera-capital-ico-hedge-fund/
+* 章定煊：競租理論揭開土地開發下的難看事 - 天下雜誌 http://opinion.cw.com.tw/blog/profile/321/article/2847

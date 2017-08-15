@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.15;
 //
 // zeppelin-solidity/contracts/token https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token
 //
