@@ -2,7 +2,7 @@ pragma solidity ^0.4.15;
 //
 // https://github.com/ethereum/ens/blob/master/contracts/ENS.sol
 //
-import './AbstractENS.sol';
+import 'AbstractENS.sol';
 
 /**
  * The ENS registry contract.
@@ -26,7 +26,7 @@ contract ENS is AbstractENS {
      * Constructs a new ENS registrar.
      */
     function ENS() {
-        records[0x00].owner = msg.sender;
+        records[0x0].owner = msg.sender;
     }
 
     /**

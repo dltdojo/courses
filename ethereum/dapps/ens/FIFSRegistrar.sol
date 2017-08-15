@@ -2,7 +2,7 @@ pragma solidity ^0.4.15;
 //
 // https://github.com/ethereum/ens/blob/master/contracts/FIFSRegistrar.sol
 //
-import './AbstractENS.sol';
+import 'AbstractENS.sol';
 
 /**
  * A registrar that allocates subdomains to the first person to claim them.
@@ -14,7 +14,7 @@ contract FIFSRegistrar {
     modifier only_owner(bytes32 subnode) {
         var node = sha3(rootNode, subnode);
         var currentOwner = ens.owner(node);
-        require(currentOwner == 0 && currentOwner == msg.sender);
+        require(currentOwner == 0 || currentOwner == msg.sender);
         _;
     }
 
