@@ -2,7 +2,7 @@ pragma solidity ^0.4.15;
 //
 // https://github.com/ethereum/ens/blob/master/contracts/FIFSRegistrar.sol
 //
-import 'AbstractENS.sol';
+import './AbstractENS.sol';
 
 /**
  * A registrar that allocates subdomains to the first person to claim them.

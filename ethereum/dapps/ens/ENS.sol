@@ -2,7 +2,7 @@ pragma solidity ^0.4.15;
 //
 // https://github.com/ethereum/ens/blob/master/contracts/ENS.sol
 //
-import 'AbstractENS.sol';
+import './AbstractENS.sol';
 
 /**
  * The ENS registry contract.
