@@ -13,5 +13,6 @@ import "github.com/ethereum/ens/contracts/ENS.sol";
 
 ```
 pragma solidity ^0.4.15;
+// https://github.com/dltdojo/courses/tree/master/ethereum/dapps/ens
 import "github.com/dltdojo/courses/ethereum/dapps/ens/T02_FIFSRegistrar.sol";
 ```

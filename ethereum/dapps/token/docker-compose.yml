@@ -1,0 +1,7 @@
+version: '2'
+services:
+  bitcoind:
+    image: dltdojo/abe
+    command: /testapp.sh
+    ports:
+      - "12750:12750"
