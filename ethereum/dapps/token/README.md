@@ -10,7 +10,7 @@
 
 ### Zeppelin token
 
-zeppelin-solidity/contracts/token at master · OpenZeppelin/zeppelin-solidity  https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token
+zeppelin-solidity/contracts/token at master · OpenZeppelin/zeppelin-solidity https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token
 
 ### Ethereum tokens
 
