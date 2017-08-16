@@ -1,4 +1,7 @@
+// http://chimera.labs.oreilly.com/books/1234000001802/ch04.html#elliptic_curve
+// Blockchain 101 - Elliptic Curve Cryptography https://eng.paxos.com/blockchain-101-elliptic-curve-cryptography
 // https://github.com/indutny/elliptic
+const BN = require('bn.js');
 const EC = require('elliptic').ec
 // https://github.com/ethereumjs/ethereumjs-util
 const ethUtil = require('ethereumjs-util')
@@ -13,10 +16,32 @@ const bmessage = require('bitcore-message');
 // SafeCurves: Introduction https://safecurves.cr.yp.to/
 
 // P256
-// y^2 = x^3-3x+41058363725152142129326129780047268409114441015993725554835256314039467401291 
+// y^2 = x^3-3x+41058363725152142129326129780047268409114441015993725554835256314039467401291 over Fp
 // 
 // secp256k1
-// y^2 = x^3+0x+7
+// y^2 = x^3+0x+7 over Fp
+// y*y mod p = (x*x*x + 7) mode p 
+// secp256k1 Prime Field (p) = 2^256 – 2^32 – 2^9 – 2^8 – 2^7 – 2^6 – 2^4 – 1 or 2^256 - 2^32 - 977
+
+function curve256k1() {
+    var ec256k1 = new EC('secp256k1')
+    // Base point (G) = (79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798, 483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8)
+    var g = ec256k1.curve.g
+    var p = ec256k1.curve.p
+    var gx = g.getX()
+    var gy = g.getY()
+    // https://github.com/indutny/bn.js/
+    var yymodp = gy.mul(gy).mod(p)
+    var xxx7modp = (gx.mul(gx).mul(gx).add(new BN(7))).mod(p)
+    // y*y mod p = (x*x*x + 7) mode p 
+    return {
+        gx: gx,
+        gy: gy,
+        yymodp: yymodp,
+        xxx7modp: xxx7modp,
+        p: p
+    }
+}
 
 // ECDSA-SHA256-secp256k1
 // bitcoin
@@ -27,17 +52,28 @@ function calcSecp256k1(msg) {
     // public keys are 64 bytes (uncompressed form) or 32 bytes (compressed form) long plus a 1-byte prefix.
     // public key in a compressed format
     // secp256k1 elliptic curve y*y == x*x*x + 7
-    const ec256k1 = new EC('secp256k1')
+    var ec256k1 = new EC('secp256k1')
     var eckeys = ec256k1.keyFromPrivate(KEY1, 'hex');
+    // 
+    // secret*G=P
+    // https://github.com/indutny/elliptic/blob/master/lib/elliptic/ec/key.js#L62
+    // this.pub = this.ec.g.mul(this.priv);
+    // 
     var pubKey = eckeys.getPublic()
     var msgHash = ethUtil.sha256(msg)
     var signature = eckeys.sign(msgHash)
+
+    var verifyPublicKey = ec256k1.keyFromPublic(pubKey)
+    // Verify signature
+    var verified = verifyPublicKey.verify(msgHash, signature)
+
     var signature2 = eckeys.sign(msgHash)
     return {
         msgHash: msgHash.toString('hex'),
         privateKey: eckeys.getPrivate().toString('hex'),
         signature: signature,
         signature2: signature2,
+        verifiec: verified,
         publicKey: { hex: pubKey.encode('hex'), x: pubKey.x, y: pubKey.y }
     }
 }
@@ -51,11 +87,16 @@ function calcP256(msg) {
     var pubKey = keys.getPublic()
     var msgHash = ethUtil.sha256(msg)
     var signature = keys.sign(msgHash)
+    var verifyPublicKey = ecP256.keyFromPublic(pubKey)
+    // Verify signature
+    var verified = verifyPublicKey.verify(msgHash, signature)
+
     var signature2 = keys.sign(msgHash)
     return {
         msgHash: msgHash.toString('hex'),
         privateKey: keys.getPrivate().toString('hex'),
         signature: signature,
+        verified: verified,
         publicKey: { hex: pubKey.encode('hex'), x: pubKey.x, y: pubKey.y }
     }
 }
@@ -121,9 +162,14 @@ function bitcoinMessage(msg) {
     var privateKey = bitcore.PrivateKey(Buffer.from(KEY1, 'hex'))
     var publicKey = privateKey.toPublicKey()
     var signature = bmessage(msg).sign(privateKey)
+
+    var address = privateKey.toAddress().toString()
+    var verified = bmessage(msg).verify(address, signature)
     var signature2 = bmessage(msg).sign(privateKey)
     return {
         publicKey: publicKey.toString(),
+        address: address,
+        verified: verified,
         signature: signature,
         signature2: signature2
     }
@@ -131,7 +177,8 @@ function bitcoinMessage(msg) {
 
 var msg = 'abc'
 var result = {
-    curveSecp256k1: "y*y == x*x*x + 7",
+    curveSecp256k1: "y*y mod p== (x*x*x + 7) mod p",
+    curve256k1: curve256k1(),
     moduleSecp256k1: secp256k1Module(),
     secp256k1: calcSecp256k1(msg),
     p256: calcP256(msg),

@@ -2,9 +2,15 @@
 
 ```
 $ node js/eckey.js
-
 {
-  "curveSecp256k1": "y*y == x*x*x + 7",
+  "curveSecp256k1": "y*y mod p== (x*x*x + 7) mod p",
+  "curve256k1": {
+    "gx": "79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
+    "gy": "483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
+    "yymodp": "4866d6a5ab41ab2c6bcc57ccd3735da5f16f80a548e5e20a44e4e9b8118c26f2",
+    "xxx7modp": "4866d6a5ab41ab2c6bcc57ccd3735da5f16f80a548e5e20a44e4e9b8118c26f2",
+    "p": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f"
+  },
   "moduleSecp256k1": {
     "privateKey": "0000000000000000000000000000000000000000000000000000000000000001",
     "publicKey": "0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
@@ -23,6 +29,7 @@ $ node js/eckey.js
       "s": "28ae7cc8f969e6b6fb1feac477818a75a46e8c364e88dfdc9880e1a5175c4bd1",
       "recoveryParam": 1
     },
+    "verifiec": true,
     "publicKey": {
       "hex": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
       "x": "79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
@@ -37,6 +44,7 @@ $ node js/eckey.js
       "s": "7f800c6926419d244ce222f3129825d4eb190f2dcda7c5221a34da3cfe22a16e",
       "recoveryParam": 1
     },
+    "verified": true,
     "publicKey": {
       "hex": "046b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c2964fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5",
       "x": "8905f76b53755c669fb732b7762251075ba95fc4fedb60179e730d418a9143c1",
@@ -45,8 +53,10 @@ $ node js/eckey.js
   },
   "bitcoinMessage": {
     "publicKey": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8",
-    "signature": "G5SjuVXZCDG25X/zSJz01iikLZ+Cc8bA0bRqZO0NYXPpJW7uE7f/OTINzVfux3zTSHC3JWoLJZotwD17BMcwJwE=",
-    "signature2": "HEKrrJQPAP+FlsavmKEaUqHAaFEqWlYo7KSNPvKzxjLtNatCga0T4VSYiXoHQLkjYn3opdYWmdUfp2bsKHZxZPc="
+    "address": "1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm",
+    "verified": true,
+    "signature": "HDOAEygwU8+uTWbMDcKxGrMWYVlP53fUxHBxmUdnBwXxGqP2kRTGlwkzEAIxJtHRrXPZlfYuoCMWUSAsp+i2LR8=",
+    "signature2": "HP1EM50kmd4NdV1tMsMAjdbx0JuPNBnq1wVjLKyg1EehNSQEn6f5iHp3EmK710hrkwddM49goC0BCxkz6NdcIOM="
   },
   "ethsign": {
     "msgHash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
@@ -66,5 +76,4 @@ $ node js/eckey.js
     "recoverPublicKey": "79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8"
   }
 }
-
 ```

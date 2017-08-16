@@ -1,11 +1,17 @@
-### Sending a Transaction with Data
+### Bitcoin Blockchain 
 
 * 6.5: Sending a Transaction with Data https://github.com/ChristopherA/Learning-Bitcoin-from-the-Command-Line/blob/master/06_5_Sending_a_Transaction_with_Data.md#65-sending-a-transaction-with-data
 * Meta Coin Platforms | Mastering Bitcoin http://chimera.labs.oreilly.com/books/1234000001802/ch09.html#_a_taxonomy_of_alternative_currencies_and_chains
 * Coin Secrets - OP_RETURN metadata in the Bitcoin Blockchain  http://coinsecrets.org/
+* Bitcoin 2.0 ? [ANN][XCP] Counterparty - Pioneering Peer-to-Peer Finance - Official Thread https://bitcointalk.org/index.php?topic=395761.0
+* Counterparty (technology) - Wikipedia  https://en.wikipedia.org/wiki/Counterparty_(technology)
+* Introduction · Colored-Coins/Colored-Coins-Protocol-Specification https://github.com/Colored-Coins/Colored-Coins-Protocol-Specification/wiki/Introduction
+
+### Sending a Transaction with Data
+
+* http://<VMIP>:12750/
 * evm-tools/guide.md at master · CoinCulture/evm-tools https://github.com/CoinCulture/evm-tools/blob/master/analysis/guide.md
 * https://blockchain.info/pushtx
-* http://<VMIP>:12750/
 
 ```
 $ docker-compose up -d abe
