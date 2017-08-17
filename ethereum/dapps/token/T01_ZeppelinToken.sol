@@ -69,13 +69,13 @@ contract TestZepplinToken{
         require(token.balanceOf(0xdeed) == 199000);
         require(token.mintingFinished() == false);
         require(token.finishMinting());
-        require(token.mintingFinished() == true);
+        require(token.mintingFinished());
     }
     
      function testMintInvalid(){
         MintableToken token = new FooMintableToken();
         require(token.finishMinting());
-        require(token.mintingFinished() == true);
+        require(token.mintingFinished());
         var result = token.mint(0xdeed,199000);
         require(result == false);
     }   

@@ -10,6 +10,18 @@ const KEY1 = '0000000000000000000000000000000000000000000000000000000000000001'
 const bitcore = require('bitcore-lib');
 const bmessage = require('bitcore-message');
 
+function finiteField(){
+    // F19 = {0, 1, 2, … 18}
+    // n^(p-2)=n^(-1)=1/n mod p where p is prime
+    return {
+        "11+6 F19": (11 + 6 ) % 19,
+        "11-6 F19": (11 - 6 ) % 19,
+        "11*6 F19": (11 * 6 ) % 19,
+        "9/6 F19": 11,
+        "9*6^-1=9*6^(19-2) F19": (9*Math.pow(6,17)) % 19
+    }
+}
+
 // Elliptic Curve Digital Signature Algorithm - Wikipedia https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
 // ethUtils https://github.com/ethereumjs/ethereumjs-util
 // http://davidederosa.com/basic-blockchain-programming/elliptic-curve-keys/
@@ -34,12 +46,22 @@ function curve256k1() {
     var yymodp = gy.mul(gy).mod(p)
     var xxx7modp = (gx.mul(gx).mul(gx).add(new BN(7))).mod(p)
     // y*y mod p = (x*x*x + 7) mode p 
+    // sG=P
+    // var secret = new BN(1).toString(16)
+    var keys = ec256k1.keyFromPrivate(new BN(1))
+    // 1G = P
+    var pubkey1 = keys.getPublic()
+    var pubkey2 = ec256k1.keyFromPrivate(new BN(2)).getPublic()
+
     return {
         gx: gx,
         gy: gy,
         yymodp: yymodp,
         xxx7modp: xxx7modp,
-        p: p
+        p: p,
+        publicKey1: pubkey1,
+        publicKey2: pubkey2,
+        "g.add(g)": g.add(g)
     }
 }
 
@@ -178,6 +200,7 @@ function bitcoinMessage(msg) {
 var msg = 'abc'
 var result = {
     curveSecp256k1: "y*y mod p== (x*x*x + 7) mod p",
+    finiteField:finiteField(),
     curve256k1: curve256k1(),
     moduleSecp256k1: secp256k1Module(),
     secp256k1: calcSecp256k1(msg),
