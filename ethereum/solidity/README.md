@@ -1,4 +1,5 @@
 * https://ethereum.github.io/browser-solidity/
+* fivedogit/solidity-baby-steps https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts
 
 ### Example T01 Storage
 

@@ -1,5 +1,6 @@
 * pirapira/awesome-ethereum-virtual-machine: Ethereum Virtual Machine Awesome List https://github.com/pirapira/awesome-ethereum-virtual-machine
 * evm-tools/guide.md at master · CoinCulture/evm-tools https://github.com/CoinCulture/evm-tools/blob/master/analysis/guide.md
+* 也来谈一谈以太坊虚拟机EVM的缺陷与不足_巴比特  http://www.8btc.com/evm-qtum-0817
 
 
 ### ethereumjs-vm
