@@ -63,11 +63,13 @@ contract SafeMathContract {
 }
 
 contract FooLib {
+  // The directive using A for B; can be used to attach library functions (from the library A) to any type (B). 
+  // These functions will receive the object they are called on as their first parameter (like the self variable in Python).
 
   using SafeMath for uint;
 
   function div(uint a, uint b) returns (uint){
-      return a/b;
+      return a.div(b);
   }
 
 }

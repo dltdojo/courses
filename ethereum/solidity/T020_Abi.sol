@@ -4,16 +4,27 @@ pragma solidity ^0.4.14;
 
 
 contract Foo {
-  function hello() returns (bool r){return true;}
-  function baz(uint32 x, bool y) returns (bool r) { return x > 32; }
-  function bar(bytes3[2] xy) {}
-  function sam(bytes name, bool z, uint[] data) {}
+    
+  bytes public calldata;
+  
+  function hello() returns (bool r){
+      calldata = msg.data;
+      return true;
+  }
+  function baz(uint32 x, bool y) returns (bool) {
+      calldata = msg.data;
+      return x > 32 || y;
+  }
   function () payable {}
 }
 
 contract FooAbi {
    
-   Foo foo = new Foo();
+   Foo foo;
+   
+   function FooAbi(address _fooAddr){
+       foo = Foo(_fooAddr);
+   }
    
    function testHello() returns (bool r){
          return foo.call(bytes4(keccak256("hello()")));
@@ -35,11 +46,8 @@ contract FooAbi {
        return methodId;
    }
    
-    function testBazMethod(uint32 x) returns (bool r){
-       bytes4 methodId = bytes4(keccak256('baz(uint32,bool)'));
-       // contract development - What does Solidity's "call" function mean? - Ethereum Stack Exchange  https://ethereum.stackexchange.com/questions/8270/what-does-soliditys-call-function-mean
-       // TODO
-       return foo.call(methodId, x, false);
+    function testBazMethod(uint32 x, bool y) returns (bool){
+       return foo.baz(x,y);
     }
    
    function () payable {}

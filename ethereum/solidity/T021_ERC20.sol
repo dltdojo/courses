@@ -83,3 +83,47 @@ contract StandardToken is Token {
     mapping (address => uint256) balances;
     mapping (address => mapping (address => uint256)) allowed;
 }
+
+
+contract FooToken is StandardToken {
+    function FooToken(){
+        totalSupply = 2100 ether;
+        balances[msg.sender] = totalSupply;
+    }
+}
+
+contract User {
+    function transferFrom(FooToken ft, address _from, address _to, uint256 _value){
+        ft.transferFrom(_from, _to, _value);
+    }
+}
+
+contract FooTokenTest {
+    
+    function testTransfer() {
+        User alice = new User();
+        User bob = new User();
+        FooToken ft = new FooToken();
+        ft.transfer(alice,10 ether);
+        require(ft.balanceOf(alice)== 10 ether);
+        ft.transfer(bob, 20 ether);
+        require(ft.balanceOf(bob)== 20 ether);
+    }
+    
+    function testTransferFrom() {
+        User alice = new User();
+        User bob = new User();
+        FooToken ft = new FooToken();
+        require(ft.balanceOf(this)== 2100 ether);
+        
+        // approve by FooTokenTest
+        require(ft.approve(alice, 5 ether));
+        
+        require(ft.allowance(this, alice) == 5 ether);
+        alice.transferFrom(ft,  this, bob, 2 ether);
+        require(ft.allowance(this, alice) == 3 ether);
+        require(ft.balanceOf(alice)== 0 ether);
+        require(ft.balanceOf(bob)== 2 ether);
+    }
+}
+

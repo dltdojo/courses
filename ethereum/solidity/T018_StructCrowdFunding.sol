@@ -74,7 +74,11 @@ contract TestCrowdFunding {
         require(!cf.checkGoalReached(cid));
         bob.contribute(cf,cid,5 ether);
         return cf.checkGoalReached(cid);
+        
+        // 200 -50 -50 -1 +10 
+        require(this.balance == 109 ether);
     }
 
+    // deposite 200 ether
     function () payable {}
 }
