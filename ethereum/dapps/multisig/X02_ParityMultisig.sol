@@ -1,6 +1,9 @@
-// https://ethereum.github.io/browser-solidity/
+//
+// The Parity Wallet Hack Explained – Zeppelin Solutions https://blog.zeppelin.solutions/on-the-parity-wallet-multisig-hack-405a8c12e8f7
 // https://github.com/paritytech/parity/blob/master/js/src/contracts/snippets/enhanced-wallet.sol
 // https://github.com/ethereum/dapp-bin/blob/master/wallet/wallet.sol
+//
+//
 //sol Wallet
 // Multi-sig, daily-limited account proxy/wallet.
 // @authors:

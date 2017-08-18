@@ -1,4 +1,5 @@
 pragma solidity ^0.4.14;
+// https://ethereum.github.io/browser-solidity/
 
 library FooLib{
   function pow2(uint x) returns (uint){
@@ -6,7 +7,7 @@ library FooLib{
   }
 }
 
-// internal visibility 
+// the pow2 function with internal visibility therefore the function from the library are copied to the main contract.
 library FooLibIn{
   function pow2(uint x) internal returns (uint){
       return x**2;
@@ -17,6 +18,14 @@ library FooLibIn{
 // * No state variables
 // * Cannot inherit nor be inherited
 // * Cannot receive Ether
+
+contract LibContract {
+    // no state variables
+    // non payable
+    function pow2(uint x) returns (uint){
+      return x**2;
+    }
+}
 
 contract Foo {
   uint public storedData;
@@ -63,6 +72,12 @@ contract FooContractCall {
 }
 
 contract FooContractCallFly {
+
+  function libpow2(address libContractAddress , uint x) returns (uint){
+      LibContract libContract = LibContract(libContractAddress);
+      return libContract.pow2(x);
+  }
+
   function cpow2(address fooAddr, uint x) returns (uint){
       Foo foo = Foo(fooAddr);
       return foo.pow2(x);
