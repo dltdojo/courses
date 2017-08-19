@@ -1,0 +1,7 @@
+version: '2'
+services:
+  remix:
+    build: .
+    image: dltdojo/remix:70f02ab
+    ports:
+        - "8080:8080"

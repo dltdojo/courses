@@ -10,21 +10,20 @@ contract FooLoop {
 
     uint8[10] public intArray;
 
-    function fillArray() returns (uint8[10] intArray){
+    function fillArray() returns (uint8[10]){
         uint8 x = 0;                  
         while(x < intArray.length) {
         	intArray[x] = x*x;
         	x++;
         }
+        return intArray;
     }
     
-    function getSum() constant returns (uint sum){                                          
-    	uint8 sum = 0;
-    	uint8 x = 0;
-    	while(x < integers.length){
-        	sum = sum + integers[x];
-        	x++;
-        }
+    function getSum() constant returns (uint){
+        uint sum = 0;
+    	for (uint8 i = 0; i < intArray.length; i++) {
+    	    sum += intArray[i];
+    	}
     	return sum;
     }
 }

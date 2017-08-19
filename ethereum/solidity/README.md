@@ -1,35 +1,14 @@
+* ethereum/browser-solidity: Browser-Only Solidity IDE and Runtime Environment https://github.com/ethereum/browser-solidity
+* https://remix.ethereum.org
 * https://ethereum.github.io/browser-solidity/
+* https://github.com/dltdojo/container/tree/master/dltdojo/browser-solidity
 * fivedogit/solidity-baby-steps https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts
 
-### Example T01 Storage
+### local browser-solidity node
 
-* http://solidity.readthedocs.io/en/develop/introduction-to-smart-contracts.html
-* set() gas
-* keyword public
-* Application Binary Interface Specification http://solidity.readthedocs.io/en/develop/abi-spec.html
+* http://<VMIP>:8080/
 
 ```
-pragma solidity ^0.4.14;
-import "github.com/dltdojo/courses/solidity/T01_Storage.sol";
-
-contract MyFoo is FooPublic {
-  function pow3() returns (uint res){
-    res = storedData **3 ;
-  }
-}
-
-contract NMyFooGet is FooPublic {
-  function get() constant returns (uint) {
-    return storedData +1;
-  }
-}
-```
-
-### Example T02 Library
-
-* contract FooLibCall
-
-```
-pragma solidity ^0.4.14;
-import "github.com/dltdojo/courses/solidity/T02_Library.sol";
+$ docker-compose up -d remix
+// docker-compose stop
 ```
