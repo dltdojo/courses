@@ -5,26 +5,21 @@ pragma solidity ^0.4.14;
 // event http://solidity.readthedocs.io/en/develop/contracts.html#events
 
 contract Foo {
-  
-  event Log(address from, uint value, uint balance);
     
   uint storedData;
   
-  // the current contract, explicitly convertible to Address
+  // the current contract explicitly convertible to address
   address public thisContractDeployAddress = this;
   
   function set(uint x) {
     storedData = x;
   }
   
-  //function Foo() payable {
-      // Log(msg.sender, msg.value, this.balance);
-  //}
+  //
+  // payable keyword
+  // function Foo() payable {}
   
-  function() payable {
-      // this is Foo Contract
-      Log(msg.sender, msg.value, this.balance);
-  }
+  function() payable {}
   
   // destroy the current contract, sending its funds to the given Address
   // Renaming SUICIDE opcode https://github.com/ethereum/EIPs/blob/master/EIPS/eip-6.md
@@ -32,7 +27,6 @@ contract Foo {
   // https://ethereum.stackexchange.com/questions/315/why-are-suicides-used-in-contract-programming
   function kill(){
       selfdestruct(msg.sender);
-      // Log(msg.sender, this.balance);
   }
 }
 
@@ -48,6 +42,12 @@ contract FooFallbackGas {
     function () payable {
         add();
     }
+
+    // consume more gas than the stipend provided to a fallback function:
+    // 1. Writing to storage
+    // 2. Creating a contract
+    // 3. Calling an external function which consumes a large amount of gas
+    // 4. Sending Ether
 }
 
 contract FooTester {

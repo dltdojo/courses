@@ -1,3 +1,6 @@
+### solidity
+
+* http://solidity.readthedocs.io/
 * ethereum/browser-solidity: Browser-Only Solidity IDE and Runtime Environment https://github.com/ethereum/browser-solidity
 * https://remix.ethereum.org
 * https://ethereum.github.io/browser-solidity/

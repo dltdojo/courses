@@ -14,12 +14,17 @@ contract FooGet is Foo {
   }
 }
 
-/*
-The keyword public automatically generates a function that allows you to 
-access the current value of the state variable.
-*/
+
 contract FooPublic {
+
+  // Constant State Variables
+  // State variables can be declared as constant.
+  // have to be assigned at compile time
+  uint constant myNum = 32**22 + 8; 
+  bytes32 constant myHash = keccak256("dltdojo");
+
   uint public fooInt;
+  // keyword public automatically generates a function
   // function fooInt() returns (uint) { return fooInt; }
   function set(uint x) {
     fooInt = x;
@@ -34,7 +39,7 @@ contract FooPublicPow2 is FooPublic {
 
 //
 // constant keyword is to indicate that a function does not change the contract's state.
-
+// 
 // contract design - What is the difference between a transaction and a call? - Ethereum Stack Exchange 
 // https://ethereum.stackexchange.com/questions/765/what-is-the-difference-between-a-transaction-and-a-call
 
