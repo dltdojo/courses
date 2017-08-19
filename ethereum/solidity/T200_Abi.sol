@@ -1,7 +1,7 @@
 pragma solidity ^0.4.14;
 // Application Binary Interface Specification
 // http://solidity.readthedocs.io/en/develop/abi-spec.html#application-binary-interface-specification
-
+//
 
 contract Foo {
     

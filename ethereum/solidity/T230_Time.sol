@@ -19,7 +19,7 @@ contract FooTime {
         createdTime = now;
     }
 
-    // rinkeby/kovan test
+    // rinkeby/kovan/GethDevNode test
     function timeInfo() constant returns(uint _blockNumber, uint _blockTimestamp, uint _now) {
         // Block and Transaction Properties
         // now (uint): current block timestamp (alias for block.timestamp)

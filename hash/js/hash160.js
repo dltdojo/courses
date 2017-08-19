@@ -51,7 +51,14 @@ function calcHash160() {
 // The RIPEMD-160 page http://homes.esat.kuleuven.be/~bosselae/ripemd160.html
 // RIPMD160 	8eb208f7e05d987a9b044a8e98c6b087f15a0bfc
 
+
+
 var result = {
+    abc: {
+        ripmd160 :  ethUtil.ripemd160(msg).toString('hex'),
+        hash256 :  ethUtil.sha256(ethUtil.sha256(msg)).toString('hex'),
+        hash160 :  ethUtil.ripemd160(ethUtil.sha256(msg)).toString('hex')
+    }, 
     ripmd160: { msg: msg, hash: ethUtil.ripemd160(msg).toString('hex') },
     hash256: calcHash256(),
     hash160: calcHash160()

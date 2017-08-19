@@ -94,6 +94,11 @@ $ ethnode js/sha3-keccak.js
 ```
 $ ethnode js/hash160.js
 {
+  "abc": {
+    "ripmd160": "8eb208f7e05d987a9b044a8e98c6b087f15a0bfc",
+    "hash256": "4f8b42c22dd3729b519ba6f68d2da7cc5b2d606d05daed5ad5128cc03e6c6358",
+    "hash160": "bb1be98c142444d7a56aa3981c3942a978e4dc33"
+  },
   "ripmd160": {
     "msg": "abc",
     "hash": "8eb208f7e05d987a9b044a8e98c6b087f15a0bfc"
@@ -108,6 +113,33 @@ $ ethnode js/hash160.js
     "hash": "751e76e8199196d454941c45d1b3a323f1433bd6",
     "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
     "base58decode": "00751e76e8199196d454941c45d1b3a323f1433bd6510d1634"
+  }
+}
+```
+
+solidity
+
+* http://solidity.readthedocs.io/en/develop/units-and-global-variables.html
+* https://ethereum.github.io/browser-solidity/
+
+```
+pragma solidity ^0.4.14;
+
+contract Foo {
+  function testRipemd160() returns (bytes20) {
+      return ripemd160('abc');
+  }
+  
+  function testSha256() returns (bytes32) {
+      return sha256('abc');
+  }
+  
+  function testHash160() returns (bytes20) {
+      return ripemd160(sha256('abc'));
+  }
+  
+  function testHash256() returns (bytes32) {
+      return sha256(sha256('abc'));
   }
 }
 ```

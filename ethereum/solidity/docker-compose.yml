@@ -5,3 +5,13 @@ services:
     image: dltdojo/remix:70f02ab
     ports:
         - "8080:8080"
+  gethdev:
+    image: dltdojo/geth:1.6.7
+    command: ./testrpc.sh
+    ports:
+        - "8545:8545"
+  bitcoind:
+    image: dltdojo/abe
+    command: /testapp.sh
+    ports:
+      - "12750:12750"
