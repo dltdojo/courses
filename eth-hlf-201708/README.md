@@ -2,14 +2,11 @@
 
 * 1 開發環境與Ethereum介紹練習
   * Docker, VirtualBox
-  * Ethereum 介紹
+  * 區塊鏈源起
+  * Ethereum
   * 收發乙太幣資產 MyEtherWallet/MetaMask
   * 建立與執行智能合約
-* 2 hyperledger fabric介紹練習
-  * 架構介紹
-  * 收發資產
-  * Composer playground
-* 3 加密貨幣與區塊鏈基礎
+* 2 加密貨幣與區塊鏈基礎
   * hash
     * sha256
     * ripemd160
@@ -17,28 +14,25 @@
     * sha3
     * hash256
     * hash160
-  * Elliptic-curve keys
+  * key
     * openssl
     * secp256k1
     * prime256v1
     * signature
-* 4 Ethereum開發
-  * Private PoA chain
-  * wallet
-    * MetaMask
-    * MyEtherWallet
-  * Library
-    * web3
-    * ethereumjs
-    * bitcore-lib
-  * Truffle
-* 5 Solidity智能合約實作
+* 3 Solidity智能合約實作
   * Smart Contract
   * ERC20 Contract
   * Multisig Contract
-  * The DAO Contract
-  * Ethereum Name Service Contract
-  * ICO Contract
+* 4 Ethereum開發
+  * EVM
+  * web3
+  * Truffle
+  * Ethereum Name Service
+  * Private PoA chain
+* 5 hyperledger fabric介紹練習
+  * 架構介紹
+  * 收發資產
+  * Composer playground
 * 6 Hyperledger Fabric 開發
   * Fabric CA
   * chaincode
@@ -53,7 +47,8 @@
 
 ### 區塊鏈源起
 
-
+* Bitcoin - Open source P2P money https://bitcoin.org/zh_TW/
+* https://github.com/dltdojo/courses/tree/master/blockchain/trustnetwork/net201707/backend
 
 ```
 $ cd /home/dltdojo/smb
@@ -104,3 +99,26 @@ $ docker-compose stop
 $ docker-compose rm
 $ docker-compose ps
 ```
+
+## Ethereum 介紹 
+
+* http://truffleframework.com/tutorials/ethereum-overview
+
+## 收發乙太幣資產 MyEtherWallet/MetaMask
+
+* https://faucet.rinkeby.io/
+* https://github.com/kovan-testnet/faucet
+* https://www.myetherwallet.com/
+* https://metamask.io/
+
+Rinkeby Testnet 
+
+* PrivateKey  208065a247edbe5df4d86fbdc0171303f23a76961be9f6013850dd2bdc759bbb 
+* address  https://rinkeby.etherscan.io/address/0x0BED7ABd61247635c1973eB38474A2516eD1D884
+
+## 建立與執行智能合約
+
+* coin.sol
+* https://remix.ethereum.org
+* JavaScript VM
+
