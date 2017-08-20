@@ -1,20 +1,19 @@
 version: '2'
 services:
-  ethnode1:
-    image: dltdojo/ethnode:6.a.2
-    command: /opt/geth/start.sh
+  remix:
+    build: .
+    image: dltdojo/remix:70f02ab
     ports:
-      - "9545:8545"
-      - "9546:8546"
-  ethnode2:
-    image: dltdojo/ethnode:6.a.2
-    command: /opt/geth/testrpc.sh
-    ports:
-      - "8545:8545"
-      - "8546:8546"
-  httpd:
-    image: nginx:stable-alpine
-    ports:
-      - "8080:80"
+        - "8080:8080"
     volumes:
-      - ./httpd/html:/usr/share/nginx/html
+      - ./mount:/opt/build/browser-solidity/mount
+  gethdev:
+    image: dltdojo/geth:1.6.7
+    command: ./testrpc.sh
+    ports:
+        - "8545:8545"
+  bitcoind:
+    image: dltdojo/abe
+    command: /testapp.sh
+    ports:
+      - "12750:12750"

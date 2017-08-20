@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>web3.js</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+        }
+    </style>
+    <!-- <script src="https://rawgit.com/ethereum/web3.js/master/dist/web3.js"></script> -->
+    <script src="/dweb3js/web3-0.20.1.js"></script>
+    <script type="text/javascript">
+        var web3 = new Web3();
+        web3.setProvider(new web3.providers.HttpProvider("http://" + window.location.hostname + ":8545"));
+
+        // abi
+        var coinContract = web3.eth.contract([{ "constant": true, "inputs": [], "name": "minter", "outputs": [{ "name": "", "type": "address" }], "payable": false, "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "address" }], "name": "balances", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "type": "function" }, { "constant": false, "inputs": [{ "name": "receiver", "type": "address" }, { "name": "amount", "type": "uint256" }], "name": "mint", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [{ "name": "receiver", "type": "address" }, { "name": "amount", "type": "uint256" }], "name": "send", "outputs": [], "payable": false, "type": "function" }, { "inputs": [], "payable": false, "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "from", "type": "address" }, { "indexed": false, "name": "to", "type": "address" }, { "indexed": false, "name": "amount", "type": "uint256" }], "name": "Sent", "type": "event" }]);
+    </script>
+</head>
+
+<body>
+    <h1>Web3 0.20.1</h1>
+    <div>
+        <p><button onclick="balances()">coin.at() ,  coin.balances(account0)</button></p>
+    </div>
+    <script>
+        function balances() {
+            var addressContract = "0x8f437ad9174fb1d19adef2a547bd23fe512f5637"
+            var addressUser = "0x36c2e5115ae0462e3bb8d88432cacae2d41da268"
+            var coin = coinContract.at(addressContract)
+            // https://github.com/ethereum/wiki/wiki/JavaScript-API#contract-methods
+
+            console.log(coin.balances(addressUser).toNumber())
+        }
+    </script>
+</body>
+
+</html>
