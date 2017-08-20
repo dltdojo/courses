@@ -7,10 +7,27 @@
 * web3js example http://<VMIP>:8080/mount/
 * Bitcoin core 0.14.1 http://<VMIP>:12750/
 
+json rpc
+
+* geth dev mode (accounts unlocked) http://<VMIP>:8545/
+* ethereumjs/testrpc (accounts unlocked) http://<VMIP>:18545/
+
+start all containers
+
 ```
 $ docker-compose up -d remix
 $ docker-compose up -d gethdev
+$ docker-compose up -d testrpc
 $ docker-compose up -d bitcoind
 // docker-compose up -d
-// docker-compose stop
+```
+
+stop all containers
+
+```
+$ docker-compose stop
+Stopping web3js_gethdev_1 ...
+Stopping web3js_testrpc_1 ...
+Stopping web3js_bitcoind_1 ...
+Stopping web3js_remix_1 ... done
 ```

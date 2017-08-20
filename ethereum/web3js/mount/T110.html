@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>web3.js</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://cdn.rawgit.com/ethereum/web3.js/1.0/dist/web3.min.js"></script>
+    <script type="text/javascript">
+        var web3 = new Web3()
+        //
+        // geth dev mode 8545
+        // testrcp port 18545
+        // 
+        web3.setProvider(new web3.providers.HttpProvider("http://" + window.location.hostname + ":8545"))
+        var myweb3 = web3
+        // console test
+        // > web3.version
+        // > web3.providers
+        // > web3.currentProvider
+        // > web3.eth.getAccounts(console.log)
+        // > web3.eth.getAccounts().then(console.log)
+        // web3.js 1.0 http://web3js.readthedocs.io/en/1.0/
+        // http://web3js.readthedocs.io/en/1.0/callbacks-promises-events.html#callbacks-promises-events
+        // 
+    </script>
+</head>
+
+<body>
+    <h1>T1109 Web3 1.0 beta</h1>
+</body>
+</html>
