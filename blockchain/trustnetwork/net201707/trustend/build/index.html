@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+<meta charset="UTF-8">
+<title>前端+後端+鏈端</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="MyController">
+<h1>前端+後端+鏈端</h1>
+<h3>round(9.9+6.7) = {{round}}</h3>
+<hr>
+<h2>/api</h2>
+<h3 ng-repeat="account in accounts">NAME: {{account.name}} <BR> BALANCE: {{account.balance}}</h3>
+<hr>
+<h2>/blockchain</h2>
+<h3 ng-repeat="account in accountsBlockchain">NAME: {{account.name}} <BR> BALANCE: {{account.balance}}</h3>
+<hr>
+<script>
+angular.module('myApp', [])
+    .controller('MyController', function ($scope, $http) {
+        $scope.round =  Math.round(9.9+6.7);
+        // $http.get('api.json')
+        $http.get('api').then(r=>{
+            console.log(r)
+            $scope.accounts = r.data.result
+            console.log($scope)
+        })
+
+        $http.get('blockchain').then(r=>{
+            console.log(r)
+            $scope.accountsBlockchain = r.data.result
+            console.log($scope)
+        })
+    });
+</script>
+</body>
+</html>

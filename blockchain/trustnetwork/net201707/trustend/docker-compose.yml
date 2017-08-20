@@ -1,0 +1,12 @@
+version: '2'
+services:
+  fullstack:
+    build: .
+    ports:
+      - "8900:8900"
+  bitcoind:
+    image: dltdojo/abe
+    command: /testapp.sh
+    ports:
+      - "12750:12750"
+

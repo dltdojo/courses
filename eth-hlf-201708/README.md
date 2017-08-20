@@ -2,7 +2,7 @@
 
 * 1 開發環境與Ethereum介紹練習
   * Docker, VirtualBox
-  * Ethereum介紹
+  * Ethereum 介紹
   * 收發乙太幣資產 MyEtherWallet/MetaMask
   * 建立與執行智能合約
 * 2 hyperledger fabric介紹練習
@@ -50,3 +50,57 @@
   * trade-network
   * vehicle-lifecycle-network
 
+
+### 區塊鏈源起
+
+
+
+```
+$ cd /home/dltdojo/smb
+$ git clone git@github.com:dltdojo/courses.git
+$ cd courses/blockchain/trustnetwork/net201707/backend
+$ docker-compose up -d
+$ docker-compose ps
+      Name             Command             State              Ports
+-------------------------------------------------------------------------
+backend_backend_   docker-php-        Up                 0.0.0.0:8081->80
+1                  entrypoint apac                       /tcp
+                   ...
+backend_db_1       docker-            Up                 3306/tcp
+                   entrypoint.sh
+                   mysqld
+backend_phpmyadm   /run.sh            Up                 0.0.0.0:8088->80
+in_1               phpmyadmin                            /tcp
+
+```
+
+#### phpmyadmin
+
+* phpmyadmin http://DEVIP:8088/
+* username: root
+* password: root
+
+#### 新增資料庫mydb並修改帳戶餘額
+
+* 伺服器: db - SQL - 在伺服器 "db" 執行 SQL 查詢: 
+
+```
+CREATE DATABASE mydb;
+use mydb;
+CREATE TABLE mytable ( id INT PRIMARY KEY, name VARCHAR(34) , balance INT UNSIGNED );
+INSERT INTO mytable VALUES ( 1, "mpywCp28LcmDHNKxJy9tUuXc1LcXK5gCoT", 1000);
+INSERT INTO mytable VALUES ( 2, "mjisABTPq6DwgUv4rzBtt1gY44hwBX4zZy", 2000);
+SELECT * FROM mytable;
+```
+
+#### 啟動後端開發PHP容器
+
+* http://DEVIP:8081/
+
+#### 關閉容器服務
+
+```
+$ docker-compose stop
+$ docker-compose rm
+$ docker-compose ps
+```
