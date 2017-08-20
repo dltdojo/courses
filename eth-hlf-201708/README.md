@@ -30,12 +30,13 @@
   * Ethereum Name Service
   * explorer
   * Private PoA chain
-* 5 hyperledger fabric介紹練習
+* 5 hyperledger fabric介紹
   * 架構介紹
   * 收發資產
   * Composer playground
 * 6 Hyperledger Fabric 開發
   * Fabric CA
+  * Kafka
   * Hyperledger composer
 * 7 Hyperledger Composer Business Network實作
   * basic-sample-network

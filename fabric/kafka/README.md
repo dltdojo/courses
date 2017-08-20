@@ -36,28 +36,24 @@ kafka-producer-perf-test.sh          zookeeper-server-stop.sh
 kafka-reassign-partitions.sh         zookeeper-shell.sh
 kafka-replay-log-producer.sh
 
-root@daea9c878821:/# /opt/kafka/bin/kafka-topics.sh --zookeeper zookeer0:2181 --replication-factor 2 --partitions 4 --create --topic dltdojo
+root@daea9c878821:/# /opt/kafka/bin/kafka-topics.sh --zookeeper zookeeper0:2181 --replication-factor 2 --partitions 4 --create --topic dltdojo
 Created topic "dltdojo".
 root@daea9c878821:/# /opt/kafka/bin/kafka-topics.sh --zookeeper zookeeper0:2181 --list
 dltdojo
 test
+root@daea9c878821:/# /opt/kafka/bin/kafka-topics.sh --zookeeper zookeeper1:2181 --list
+root@daea9c878821:/# /opt/kafka/bin/kafka-topics.sh --zookeeper zookeeper2:2181 --list
 ```
 
 ### Read messages from a Kafka topic
 
 ```
 root@daea9c878821:/# /opt/kafka/bin/kafka-console-consumer.sh --zookeeper zookeeper0:2181 --topic dltdojo
-HELLO FROM DLTDOJO1
-HELLO FROM DLTDOJO2
-^C
-Processed a total of 2 messages
-root@daea9c878821:/# /opt/kafka/bin/kafka-console-consumer.sh --zookeeper zookeeper0:2181 --topic dltdojo
-HELLO5
-FOO1
-FOO2
 ```
 
-### Write messages to a Kafka topic
+### Write messages to a Kafka topic 
+
+Open another login session for kafka-console-producer.sh
 
 ```
 $ docker-compose exec kafka1 bash
@@ -69,9 +65,6 @@ HELLO4
 HELLO5
 FOO1
 ^C
-root@112b9e48c333:/# /opt/kafka/bin/kafka-console-producer.sh --broker-list kafka2:9092 --topic dltdojo
-FOO2
-
 ```
 
 ### Stop all containers
