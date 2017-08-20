@@ -5,15 +5,19 @@ pragma solidity ^0.4.4;
 //
 import "github.com/ConsenSys/MultiSigWallet/contracts/solidity/MultiSigWallet.sol";
 
+// change to 0.4.4 https://remix.ethereum.org/#version=soljson-v0.4.4+commit.4633f3de.js
+
+// 
 // 2-of-3
 // copy account1,account2
 // swich back account0
-// new Wallet() [account0,account1,account2],2
+// new FooWallet() [account0,account1,account2],2
 // ["0xca35b7d915458ef540ade6068dfe2f44e8fa733c","0x14723a09acff6d2a60dcdf7aa4aff308fddc160c","0x4b0897b0513fdc7c541b6d9d7e929c4e5364d2db"],2
 // fallback() 50 ether 
 // submitTransaction() "0xdeed",100,"0x00" return transactionId: 0
 // confirmTransaction()@account1 0
 // transactions() 0
+// getBalance()
 
 // submitTransaction() "0xdeed",200,"0x00" return transactionId: 1
 // confirmTransaction()@account2 1
@@ -36,6 +40,14 @@ contract User {
     }
 }
 
+//
+// fallback() 100 
+// getBalance()
+// initWallet2of3()
+// getBalance() and getWalletBalance()
+// testSign20f3()
+// getBalance() and getWalletBalance()
+// 
 contract TestWallet{
     
     uint public txid;
