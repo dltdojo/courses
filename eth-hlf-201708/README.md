@@ -8,24 +8,20 @@
   * 建立與執行智能合約
 * 2 加密貨幣與區塊鏈基礎
   * hash
-    * sha256
-    * ripemd160
-    * keccak
-    * sha3
-    * hash256
-    * hash160
+    * sha256/ripemd160
+    * keccak/sha3
+    * hash256/hash160
   * key
+    * secp256k1/prime256v1
     * openssl
-    * secp256k1
-    * prime256v1
     * signature
 * 3 Solidity智能合約實作
-  * Smart Contract
+  * Solidity
   * ERC20 Contract
   * Multisig Contract
 * 4 Ethereum開發
   * EVM
-  * web3
+  * web3js
   * Truffle
   * Ethereum Name Service
   * explorer
@@ -44,7 +40,6 @@
   * carauction-network
   * trade-network
   * vehicle-lifecycle-network
-
 
 ### 區塊鏈源起
 

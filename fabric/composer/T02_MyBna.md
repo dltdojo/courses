@@ -3,6 +3,10 @@
 
 ### 啟動 Playground 
 
+使用本地端需要先啟動。
+
+* https://hyperledger.github.io/composer/
+
 ```
 $ ./composer.sh
 ```
@@ -10,7 +14,6 @@ $ ./composer.sh
 
 * https://github.com/dltdojo/composer-sample-networks/tree/master/packages/basic-sample-network
 * https://github.com/hyperledger/composer-sample-networks
-* 先啟動網路
 * 下載composer-sample-networks
 * VSCode開啟 \\DEVIP\smb\composer-sample-networks 編輯
 
@@ -18,6 +21,7 @@ $ ./composer.sh
 $ cd /home/dltdojo/smb
 $ git clone https://github.com/dltdojo/composer-sample-networks.git
 $ cd composer-sample-networks
+$ npm i
 ```
 
 ### 修改basic-sample-network網路後匯出bna
@@ -26,6 +30,7 @@ $ cd composer-sample-networks
 * lib/smaple.js 
 * models/sample.cto
 * permissions.acl
+* test/sample.js
 * dist/basic-sample-network.bna
 * http://DEVIP:8080/
 
