@@ -1,6 +1,6 @@
 pragma solidity ^0.4.4;
 // 
-// https://ethereum.github.io/browser-solidity/
+// https://remix.ethereum.org
 // https://github.com/ConsenSys/MultiSigWallet/blob/master/contracts/solidity/MultiSigWallet.sol
 //
 import "github.com/ConsenSys/MultiSigWallet/contracts/solidity/MultiSigWallet.sol";

@@ -5,7 +5,7 @@
 * web3.js 0.20 https://github.com/ethereum/wiki/wiki/JavaScript-API
 * Remix Solidity IDE http://<VMIP>:8080/
 * web3js example http://<VMIP>:8080/mount/
-* Bitcoin core 0.14.1 http://<VMIP>:12750/
+* Bitcoin core 0.14.2 http://<VMIP>:12750/
 
 json rpc
 

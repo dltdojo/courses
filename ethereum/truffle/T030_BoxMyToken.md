@@ -353,14 +353,6 @@ Compiling zeppelin-solidity/contracts/token/StandardToken.sol...
 
 ### testrpc
 
-```
-$ testrpc
-
-HD Wallet
-==================
-Mnemonic: version sadness home update border print gaze mimic bulb badge puzzle near
-
-```
 
 ### deploy contract to testrpc
 
@@ -396,14 +388,29 @@ Saving artifacts...
 
 * johnpapa/lite-server: Lightweight node server https://github.com/johnpapa/lite-server
 * bs-config.json
+* testrpc mnemonics
+* truffle migrate again when restart testrpc
 
 ```
+HD Wallet
+==================
+Mnemonic:      pretty prison acquire spray hawk disorder damp gloom march describe scout mandate
+Base HD Path:  m/44'/60'/0'/0/{account_index}
+```
+
+start local server
+
+```
+$ truffle migrate
 $ npm run dev
 ```
 
-### chrome metamask 
+### Chrome MetaMask Setup 
+
+NOTE: 注意注意特別注意 MetaMask 目前所有網路共用一組密詞，也就是如果你這裡換成testrpc舊的其他網路的也會跟著消失需要重新輸入，請先確認已經將原始的密詞備份完成。
 
 * coustom rpc : http://<DEVIP>:8545
-* click "I forgot my password"
+* click "Lock" - "I forgot my password"
 * RESTORE VAULT : testrpc mnemonic
-
+* Account1 send token to Account2
+* Account2 reload testpage

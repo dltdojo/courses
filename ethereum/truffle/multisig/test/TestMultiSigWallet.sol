@@ -23,13 +23,6 @@ contract TestMultiSigWallet {
   User user2;
   User user3;
 
-   struct Transaction {
-        address destination;
-        uint value;
-        bytes data;
-        bool executed;
-    }
-
   function beforeAll() {
     // require(this.balance== 50 ether);
   }

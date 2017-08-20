@@ -1,12 +1,10 @@
 ## Ethereum and HyperLedger Fabric Coding Workshop
 
 * 1 開發環境與Ethereum介紹練習
-  * Docker
-  * VirtualBox
+  * Docker, VirtualBox
   * Ethereum介紹
-  * 收發乙太幣資產 MyEtherWallet/MetaMask/Rinkeby/Kovan
-  * 建立智能合約 Rinkeby
-  * 執行智能合約 Rinkeby
+  * 收發乙太幣資產 MyEtherWallet/MetaMask
+  * 建立與執行智能合約
 * 2 hyperledger fabric介紹練習
   * 架構介紹
   * 收發資產

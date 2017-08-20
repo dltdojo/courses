@@ -59,5 +59,9 @@ Compiliation failed. See above.
 * Upgrade to solidity 0.4.13 · Issue #484 · trufflesuite/truffle https://github.com/trufflesuite/truffle/issues/484
 
 ```
-$ 
+$ truffle test
 ```
+
+### LogoVote TestCase
+
+LogoVote2017/taipei-eth-logovote/test at master · EtherTW/LogoVote2017  https://github.com/EtherTW/LogoVote2017/tree/master/taipei-eth-logovote/test
