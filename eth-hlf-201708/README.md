@@ -28,6 +28,7 @@
   * web3
   * Truffle
   * Ethereum Name Service
+  * explorer
   * Private PoA chain
 * 5 hyperledger fabric介紹練習
   * 架構介紹
@@ -35,7 +36,6 @@
   * Composer playground
 * 6 Hyperledger Fabric 開發
   * Fabric CA
-  * chaincode
   * Hyperledger composer
 * 7 Hyperledger Composer Business Network實作
   * basic-sample-network
@@ -48,6 +48,7 @@
 ### 區塊鏈源起
 
 * Bitcoin - Open source P2P money https://bitcoin.org/zh_TW/
+* https://github.com/dltdojo/courses/tree/master/blockchain
 * https://github.com/dltdojo/courses/tree/master/blockchain/trustnetwork/net201707/backend
 
 ```
