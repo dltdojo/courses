@@ -80,3 +80,9 @@ contract TestZepplinToken{
         require(result == false);
     }   
 }
+
+// differnce ?
+// Build-a-Coin Cryptocurrency Creator http://build-a-co.in/
+// How To Create Your Own Cryptocurrency https://www.fastcompany.com/3025700/how-to-create-your-own-cryptocurrency
+// Build-a-Coin Cryptocurrency Creator | Hacker News https://news.ycombinator.com/item?id=15077117
+// CryptoAsset Market Capitalizations https://coinmarketcap.com/assets/

@@ -1,4 +1,46 @@
-* Elliptic curve cryptography - Wikipedia https://en.wikipedia.org/wiki/Elliptic_curve_cryptography
+## Elliptic curve cryptography (ECC)
+
+Tasks
+
+* trapdoor函數
+* 繪出各種EC y^2 = x^3 + ax + b (ℝ)
+* P=Q
+* 繪出 y^2 = x^3 + ax + b (𝔽ₚ)
+* ECC sG=P 公鑰 P
+
+### Shared Key (ECDH) 
+
+* BOB: PubBob = PrivBob * G
+* ALCIE: R = random * G
+* ALICE: SharedSecret S = random * PubBob
+* BOB: PrivBob * R = PrivBob * random * G = random * PrivBob * G = random * PubBob = S 
+* Diffie–Hellman key exchange - Wikipedia  https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+* ECDH Elliptic curve Diffie–Hellman - Wikipedia https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman
+
+### TODO
+
+Elliptic Curve scalar multiplication (𝔽ₚ)  https://cdn.rawgit.com/andreacorbellini/ecc/920b29a/interactive/modk-mul.html
+
+* y^2 = x^3 + x + 7 (𝔽ₚ)
+* 選一個三位數質數p
+* 選一數字當成 base point G 
+* 選一數字當成私鑰s
+* 公鑰sG=P
+* 同一曲線做出BOB金鑰對
+* ALICE隨機選一數字做出分享金鑰並用BOB私鑰比對。
+
+### References
+
+* Elliptic curve cryptography - Wikipedia https://en.wikipedia.org/wiki/
+* 澎湖石滬 - 維基百科 https://zh.wikipedia.org/wiki/%E6%BE%8E%E6%B9%96%E7%9F%B3%E6%BB%AC
+* 質數列表 - 維基百科 https://zh.wikipedia.org/wiki/%E8%B3%AA%E6%95%B8%E5%88%97%E8%A1%A8
+* Elliptic Curve Cryptography: a gentle introduction - Andrea Corbellini http://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/
+* Elliptic Curve scalar multiplication (ℝ) https://cdn.rawgit.com/andreacorbellini/ecc/920b29a/interactive/reals-add.html
+* Elliptic Curve scalar multiplication (𝔽ₚ) https://cdn.rawgit.com/andreacorbellini/ecc/920b29a/interactive/modk-mul.html
+* Secp256k1 - Bitcoin Wiki https://en.bitcoin.it/wiki/Secp256k1
+* Elliptic Curve Cryptography Overview - YouTube https://www.youtube.com/watch?v=dCvB-mhkT0w
+
+### Test
 
 ```
 $ node js/eckey.js
