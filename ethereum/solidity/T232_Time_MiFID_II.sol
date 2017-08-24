@@ -21,8 +21,12 @@ contract FooExchange {
    }
    
    function orderExecutionBlockTime(bytes32 orderData) returns (bytes32) {
-       bytes32 id = sha3(orderData, now);
-       orderExecutionTimeStamp[id] = now;
+       uint256 nowWhat = now;
+       // uint256 nowWhat = nowUtcPrecompiledContract() ?
+       bytes32 id = sha3(orderData, nowWhat);
+       orderExecutionTimeStamp[id] = nowWhat;
        return id;
    }
 }
+
+// 
