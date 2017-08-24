@@ -39,3 +39,6 @@ contract FooTest {
 // instructions : SSTORE
 // stack 0x1 0x9
 // 
+
+// TODO
+// set a new number and find it.
