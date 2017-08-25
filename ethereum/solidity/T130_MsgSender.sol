@@ -4,6 +4,51 @@ pragma solidity ^0.4.14;
 // fallback http://solidity.readthedocs.io/en/develop/contracts.html#fallback-function
 // event http://solidity.readthedocs.io/en/develop/contracts.html#events
 
+contract TestMsgSender {
+    // send 100 ether
+    function() payable {}
+
+    function test0Alice() returns (uint){
+        Foo foo = new Foo();
+        Alice alice = new Alice(foo);
+        require(alice.foo()==foo);
+        alice.transfer(2 ether);
+        alice.testFooSend();
+        require(foo.balance == 1 ether);
+        require(alice.balance == 1 ether);
+        // who pay gas ? 
+        alice.testFooKill();
+        require(alice.balance == 2 ether);
+        // who pay gas ? 
+        return alice.balance;
+    }
+
+    function test1Bob() returns (uint){
+        Foo foo = new Foo();
+        Alice alice = new Alice(foo);
+        Bob bob = new Bob(foo);
+        require(bob.foo()==foo);
+        require(bob.alice()!=alice);
+        bob.transfer(10 ether);
+        
+        Alice balice = Alice(bob.alice());
+        balice.transfer(1 ether);
+        bob.testAliceFooSend();
+        require(foo.balance == 1 ether);
+        bob.testAliceFooKill();
+        require(bob.balance == 10 ether);
+        return bob.balance;
+    }
+    
+    function testTodo() returns (uint){
+        // Carol carol = new Carol();
+        // Carol carol = Carol(addr);
+        // require(carol.balance == ?);
+        return 0;
+    }
+
+}
+
 contract Base {
     event InfoEvent(address contractAddress,  uint balance);
     function info(){
@@ -13,31 +58,25 @@ contract Base {
 
 contract Foo is Base {
   
-  function Foo() payable {
-     
-  }
+    function Foo() payable {}
 
-  function() payable {
-    
-  }
+    function() payable {}
   
-  function kill(){
-      selfdestruct(msg.sender);
-  }
+    function kill(){
+        selfdestruct(msg.sender);
+    }
 }
 
 // https://ethereum.stackexchange.com/questions/1891/whats-the-difference-between-msg-sender-and-tx-origin
 contract Alice is Base {
     
-    Foo foo;
+    Foo public foo;
     
     function Alice(address _fooAddress) payable {
         foo = Foo(_fooAddress);
     }
     
-    function() payable {
-       
-    }
+    function() payable {}
 
     function testFooSend(){
         // Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
@@ -56,20 +95,18 @@ contract Alice is Base {
 
 contract Bob is Base {
     
-    Foo foo;
-    Alice alice;
+    Foo public foo;
+    Alice public alice;
     
-    function Bob(address _fooAddress, address _aliceAddress) payable {
+    function Bob(address _fooAddress) payable {
         foo = Foo(_fooAddress);
-        alice = Alice(_aliceAddress);
+        alice = new Alice(foo);
     }
     
-    function() payable {
-       
-    }
+    function() payable {}
 
     function testFooSend(){
-        foo.transfer(3 ether);
+        foo.transfer(2 ether);
     }
     
     function testFooKill(){
@@ -84,3 +121,5 @@ contract Bob is Base {
         alice.testFooKill();
     }
 }
+
+contract Carol is Base {}
