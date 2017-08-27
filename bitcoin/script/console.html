@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+<head>
+<meta charset="UTF-8">
+<title>Bitcoin Script Console</title>
+<style>
+    body {
+        width: 30em;
+        margin: 0 auto;
+    }
+</style>
+<script src="https://rawgit.com/bitpay/bitcore-lib/master/bitcore-lib.js"></script>
+<script>
+    var bitcore = require('bitcore-lib');
+    var unit = new bitcore.Unit.fromBTC(1);
+    var Script = bitcore.Script;
+
+    function runCode(inputUnlock, outputLock){
+        var inputScript = Script(inputUnlock);
+        var outputScript = Script(outputLock);
+        return Script.Interpreter().verify(inputScript, outputScript);
+    }
+    function testCode1() {
+        var inputScript = 'OP_1';
+        var outputScript = 'OP_15 OP_ADD OP_16 OP_EQUAL';
+        return runCode(inputScript, outputScript);
+    }
+</script>
+</head>
+<body>
+<h2>Script Console Html</h2>
+<pre>
+> testCode1()
+true
+> runCode('OP_2','OP_3 OP_ADD OP_5 OP_EQUAL')
+true
+> runCode('OP_2 OP_3','OP_ADD OP_5 OP_EQUAL')
+true
+> runCode('OP_2 OP_3','OP_ADD OP_6 OP_EQUAL')
+false
+</pre>
+</body>
+</html>
