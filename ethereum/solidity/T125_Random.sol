@@ -5,6 +5,8 @@ pragma solidity ^0.4.14;
 //
 // contract design - When can BLOCKHASH be safely used for a random number? When would it be unsafe? - Ethereum Stack Exchange 
 // https://ethereum.stackexchange.com/questions/419/when-can-blockhash-be-safely-used-for-a-random-number-when-would-it-be-unsafe
+//
+
 contract FooRandom{
     function random() returns (bytes32) {
         return block.blockhash(block.number-1);
