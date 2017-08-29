@@ -1,0 +1,8 @@
+version: '2'
+services:
+  dgraph:
+    image: dgraph/dgraph
+    command: "dgraph --bindall=true --memory_mb 2048"
+    ports:
+        - "8080:8080"
+        - "9080:9080"

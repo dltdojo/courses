@@ -5,8 +5,11 @@ services:
     ports:
       - "8080:8080"
   gethdev:
-    image: dltdojo/ethnode:6.a.2
-    command: /opt/geth/testrpc.sh
+    image: dltdojo/geth:1.6.7
+    command: "bash -c \"/opt/geth/start.sh &\
+        sleep 2 && \
+        echo blocktime 30 secs && \
+        /opt/geth/testrpc3.sh 30\""
     ports:
       - "8545:8545"    
   carexp:
