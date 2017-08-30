@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style>
+        body {
+            width: 30em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+    <script src="https://rawgit.com/bitpay/bitcore-lib/master/bitcore-lib.js"></script>
+</head>
+
+<body>
+    <h2>Hello World Vue.js</h2>
+    <div id="app">
+        <p>{{ message }}</p>
+        <div>
+            <div v-for="(k,index) in keys">
+                <p>
+                    <h3>{{index}} ADDRESS: {{ k.address }}</h3>
+                    KEY: {{k.key}}</p>
+                    <hr/>
+            </div>
+        </div>
+    </div>
+    <script>
+        var bitcore = require("bitcore-lib")
+        var app;
+        var data = {
+            message: 'Hello Vue! 2017 & Bitcore-lib',
+            keys: _.range(10).map(function (v) {
+                var privateKey = new bitcore.PrivateKey();
+                return {
+                    key: privateKey.toString(),
+                    address: privateKey.toAddress().toString()
+                }
+            })
+        };
+        function initVue() {
+            app = new Vue({
+                el: '#app',
+                data: data
+            })
+        }
+        window.addEventListener('load', initVue)
+    </script>
+</body>
+
+</html>

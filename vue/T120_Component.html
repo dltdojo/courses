@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style>
+        body {
+            width: 30em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <h2>Hello World Vue.js</h2>
+    <div id="app">
+        <p>{{ message }}</p>
+        <ol>
+            <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+    <script>
+        var app;
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        })
+
+        var data = {
+            message: 'Hello Vue! 2017',
+            groceryList: [
+                { id: 0, text: 'Vegetables' },
+                { id: 1, text: 'Cheese' },
+                { id: 2, text: 'Whatever else humans are supposed to eat' }
+            ]
+        }
+
+        function initVue() {
+            app = new Vue({
+                el: '#app',
+                data: data
+            })
+        }
+        window.addEventListener('load', initVue)
+    </script>
+</body>
+
+</html>

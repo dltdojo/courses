@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web3js</title>
+    <style>
+        body {
+            width: 30em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+    <!-- master version : 0.20.1 -->
+    <script src="https://rawgit.com/ethereum/web3.js/master/dist/web3.js"></script>
+</head>
+
+<body>
+    <h2>Hello World Vue.js</h2>
+    <div id="app">
+        <button v-on:click="loadBlocks">LoadBlocks</button>
+        <p>{{ message }}</p>
+        <div v-for="(block,index) in blocks">
+            <h3>height: {{block.number}} <a :href="'https://rinkeby.etherscan.io/block/'+block.number">link</a></h3>
+            <p>hash : {{block.hash}}</p>
+            <p v-for="tx in block.transactions">
+                txid : {{tx.hash}}<br/>
+                from : {{tx.from}}<br/>
+                to : {{tx.to}}<br/>
+                input : {{tx.input}}<br/>
+                <a :href="'https://rinkeby.etherscan.io/tx/'+tx.hash">link</a>
+            </p>
+            <hr/>
+        </div>
+    </div>
+    <script>
+        var data = {
+            message: 'Hello Vue! 2017',
+            blocks: []
+        };
+
+        var Web3 = require('web3');
+        var web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/"));
+        console.log(web3.currentProvider);
+
+        function loadBlocks() {
+            // https://rinkeby.etherscan.io/block/803696
+            // 	3 transactions and 0 contract internal transactions in this block
+            [803696].forEach(function (v) {
+                web3.eth.getBlock(v, true, function (error, result) {
+                    if (!error) {
+                        console.log(result)
+                        data.blocks.push(result)
+                    } else {
+                        console.error(error)
+                    }
+                })
+            })
+        }
+        var app = new Vue({
+            el: '#app',
+            data: data,
+            methods: {
+                loadBlocks: loadBlocks
+            }
+        })
+    </script>
+</body>
+
+</html>

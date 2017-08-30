@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style>
+        body {
+            width: 30em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <h2>Hello World Vue.js</h2>
+    <div id="app">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+    <div id="app-2">
+        <span v-bind:title="message">
+              Hover your mouse over me for a few seconds
+              to see my dynamically bound title!
+            </span>
+    </div>
+    <script>
+        var app;
+        var app2;
+        function initVue() {
+            app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue! 2017'
+                },
+                methods: {
+                    reverseMessage: function () {
+                        this.message = this.message.split('').reverse().join('')
+                    }
+                }
+            })
+
+            app2 = new Vue({
+                el: '#app-2',
+                data: {
+                    message: 'You loaded this page on ' + new Date().toLocaleString()
+                }
+            })
+        }
+        window.addEventListener('load', initVue)
+    </script>
+</body>
+
+</html>

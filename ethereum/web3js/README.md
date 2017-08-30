@@ -3,6 +3,15 @@
 * ethereum/web3.js: Ethereum JavaScript API https://github.com/ethereum/web3.js/
 * web3.js 1.0 http://web3js.readthedocs.io/en/1.0/
 * web3.js 0.20 https://github.com/ethereum/wiki/wiki/JavaScript-API
+
+```
+$ npm install -g lite-server
+$ lite-server
+```
+
+
+### Local Docker Dev mode
+
 * Remix Solidity IDE http://<VMIP>:8080/
 * web3js example http://<VMIP>:8080/mount/
 * Bitcoin core 0.14.2 http://<VMIP>:12750/

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style>
+        body {
+            width: 30em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <h2>Hello World Vue.js</h2>
+    <div id="app">
+        <p>{{ message }}</p>
+        <input v-model="message">
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+    <script>
+        var app;
+     
+        function initVue() {
+            app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue! 2017'
+                },
+                methods: {
+                    reverseMessage: function () {
+                        this.message = this.message.split('').reverse().join('')
+                    }
+                }
+            })
+        }
+        window.addEventListener('load', initVue)
+    </script>
+</body>
+
+</html>

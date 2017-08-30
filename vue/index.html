@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style>
+        body {
+            width: 30em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+</head>
+
+<body>
+    <h2>Hello World Vue.js</h2>
+    <div id="app">
+        <div>
+            <div v-for="html in htmls">
+                <h3><a :href="html">{{html}}</a></h3>
+            </div>
+        </div>
+    </div>
+    <script>
+        var app;
+        var data = {
+            message: 'Hello Vue! 2017 & Bitcore-lib',
+            htmls: ['T100_HelloWorld.html', 'T110_TwoWayBinding.html','T120_Component.html','T200_BitcoreLib.html','T300_EthereumWeb3js.html']
+        };
+
+        var app = new Vue({
+            el: '#app',
+            data: data
+        })
+    </script>
+</body>
+
+</html>
