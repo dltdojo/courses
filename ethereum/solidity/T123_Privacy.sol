@@ -8,7 +8,7 @@ contract Foo {
     
     uint public a = 10 ;
     
-    uint b = 8 ;
+    uint private b = 8 ;
     
     function set(uint _b){
         b = _b;
@@ -26,12 +26,13 @@ contract FooTest {
 }
 
 //
-// initial state b
+// 1. initial state b
 //
 // Foo.Create - Launch debuger
 // b = 8 => PUSH1 08
 //
-// state b
+
+// 2. find state b in function set()
 //
 // foo.set(9) - Launch debuger
 // Functions :  0dbe671f a() 60fe47b1 set(uint256)
@@ -39,6 +40,13 @@ contract FooTest {
 // instructions : SSTORE
 // stack 0x1 0x9
 // 
+
+// 3. find state b in Foo At Address
+// Foo At Address
+// a() Launch debugger
+// Storagecompletely loaded
+// key: 0x0000000000000000000000000000000000000000000000000000000000000001
+//
 
 // TODO
 // set a new number and find it.
