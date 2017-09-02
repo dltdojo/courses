@@ -8,7 +8,10 @@ services:
       - ./mount:/opt/build/browser-solidity/mount
   gethdev:
     image: dltdojo/ethnode:6.a.2
-    command: /opt/geth/testrpc.sh
+    command: "bash -c \"/opt/geth/start-debug.sh &\
+        sleep 5 && \
+        echo blocktime 10 secs && \
+        /opt/geth/testrpc3.sh 10\""
     ports:
       - "8545:8545"
     volumes:

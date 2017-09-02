@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>web3.js</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+        }
+    </style>
+    <!-- <script src="https://rawgit.com/ethereum/web3.js/master/dist/web3.js"></script> -->
+    <script src="/dweb3js/web3-0.20.1.js"></script>
+    <script type="text/javascript">
+        var web3 = new Web3()
+        web3.setProvider(new web3.providers.HttpProvider("http://" + window.location.hostname + ":8545"))
+        function extendWeb3() {
+            var methods = []
+            methods.push(new web3._extend.Method({
+                name: 'traceTransaction',
+                call: 'debug_traceTransaction',
+                inputFormatter: [null, null],
+                params: 2
+            }))
+            
+            methods.push(new web3._extend.Method({
+                name: 'dumpBlock',
+                call: 'debug_dumpBlock',
+                params: 1,
+                inputFormatter: [null]
+            }))
+
+            if (methods.length > 0) {
+                web3._extend({
+                    property: 'debug',
+                    methods: methods,
+                    properties: []
+                })
+            }
+        }
+        extendWeb3()
+        var myweb3 = web3
+    </script>
+</head>
+
+<body>
+    <h1>T220 Web3 0.20.1</h1>
+    <div>
+        <pre>
+            > myweb3.debug.dumpBlock("0x2");
+            > myweb3.debug.dumpBlock("0x3");
+            > myweb3.debug.traceTransaction("0x2e269986bc093df6c964676b5be4f79861de30b31e0cac8665613fe4bce1538c")
+        </pre>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>
