@@ -2,7 +2,8 @@
 * JSON-RPC - Bitcoin Wiki https://en.bitcoin.it/wiki/API_reference_(JSON-RPC)
 * Original Bitcoin client/API calls list - Bitcoin Wiki https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list
 
-### ethereum geth rpc
+### ethereum geth jsonrpc
+
 ```
 $ docker-compose up -d
 
@@ -16,7 +17,7 @@ $ curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[
 // $ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_start","params":[],"id":74}' localhost:8545
 ```
 
-### bitcoind rpc
+### bitcoind jsonrpc
 
 ```
 $ docker-compose exec bitcoind bash

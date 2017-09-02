@@ -17,23 +17,23 @@
 </head>
 
 <body>
-    <h2>Hello World Vue.js</h2>
+    <h2>Hello World web3.js</h2>
     <div id="app">
         <button v-on:click="loadBlocks">LoadBlocks</button>
         <p>{{ message }}</p>
         <div v-for="(block,index) in blocks">
-            <h3>height: {{block.number}} <a :href="'https://rinkeby.etherscan.io/block/'+block.number">link</a></h3>
+            <h3>height: {{block.number}} <a :href="'https://rinkeby.etherscan.io/block/'+block.number" target="_blank">link</a></h3>
             <p>hash : {{block.hash}}</p>
             <p v-for="tx in block.transactions">
                 txid : {{tx.hash}}<br/>
-                <a :href="'https://rinkeby.etherscan.io/tx/'+tx.hash">link</a>
+                <a :href="'https://rinkeby.etherscan.io/tx/'+tx.hash" target="_blank">link</a>
             </p>
             <hr/>
         </div>
     </div>
     <script>
         var data = {
-            message: 'Hello Vue! 2017',
+            message: 'Hello Web3.js 2017',
             blocks: []
         };
 
@@ -42,9 +42,15 @@
         console.log(web3.currentProvider);
 
         function loadBlocks() {
-            // https://rinkeby.etherscan.io/block/803696
-            // 	3 transactions and 0 contract internal transactions in this block
-            [803696].forEach(function (v) {
+            // https://rinkeby.etherscan.io/address/0xc7cd2ac531c8c2af17acaf34dff5c0fc0d777267
+            // 823480 - Contract Creation
+            // 823492 - transfer token
+            [823480,823492].forEach(function (v) {
+                
+                // https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethgetblock
+                // web3.eth.getBlock(blockHashOrBlockNumber [, returnTransactionObjects] [, callback])
+                // https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethgettransaction
+
                 web3.eth.getBlock(v, true, function (error, result) {
                     if (!error) {
                         console.log(result)

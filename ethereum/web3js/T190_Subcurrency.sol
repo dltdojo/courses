@@ -45,9 +45,3 @@ contract Coin {
         Sent(msg.sender, receiver, amount);
     }
 }
-
-contract MyWallet {
-    function transfer(address to) payable {
-        to.transfer(msg.value);
-    }
-}
