@@ -14,3 +14,13 @@ services:
     command: /testapp.sh
     ports:
       - "12750:12750"
+  mariadb:
+    image: mariadb:10.1
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=mariadb
+    ports:
+      - "8088:80"

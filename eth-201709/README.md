@@ -7,6 +7,13 @@
 * VirtualBox
 * Visual Studio Code
 * ssh client ( PuTTY http://www.putty.org/ )
+* https://github.com/dltdojo/courses
+
+```
+$ cd /home/dltdojo/smb
+$ git clone git@github.com:dltdojo/courses.git
+$ cd courses
+```
 
 ## Ethereum 介紹 
 
@@ -29,3 +36,5 @@ Rinkeby Testnet
 * coin.sol
 * https://remix.ethereum.org
 * JavaScript VM
+
+## 

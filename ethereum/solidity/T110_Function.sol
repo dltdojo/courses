@@ -1,5 +1,7 @@
 pragma solidity ^0.4.14;
-// https://ethereum.github.io/browser-solidity/
+
+// http://remix.ethereum.org/
+
 contract Foo {
   uint storedData;
   function set(uint x) {

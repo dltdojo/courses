@@ -78,3 +78,4 @@ $ docker-compose stop
 * Bringing up a Kafka-based Ordering Service https://github.com/hyperledger/fabric/blob/master/docs/source/kafka.rst
 * https://github.com/hyperledger/fabric/blob/master/bddtests/dc-orderer-kafka-base.yml
 * https://github.com/hyperledger/fabric/blob/master/bddtests/dc-orderer-kafka.yml
+* lightning network · cryptocurrencyindia/Parsec  https://github.com/cryptocurrencyindia/Parsec/blob/master/domain/src/main/scala/org/parsec/protocol/Parsec.scala
