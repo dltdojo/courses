@@ -2,7 +2,7 @@ pragma solidity ^0.4.14;
 
 // 
 // metamask - rinkeby testnet - unlock
-// http://remix.ethereum.org/ 
+// Local Remix http://VMIP:8080/
 // Contract - Environment - Injected Web3
 // Settings - Solidity - 0.4.14
 // FooToken - Create 
@@ -25,3 +25,10 @@ contract FooToken is StandardToken {
     balances[msg.sender] = INITIAL_SUPPLY;
   }
 }
+
+// TODO
+// 1. Create YourToken
+// 2. Transfer YourToken
+// 3. YourToken - At Address
+// 4. balanceOf - account[0]
+//

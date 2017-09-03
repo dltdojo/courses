@@ -4,13 +4,22 @@
 * web3.js 1.0 http://web3js.readthedocs.io/en/1.0/
 * web3.js 0.20 https://github.com/ethereum/wiki/wiki/JavaScript-API
 
+### Local Lite-Server Mode
+
+install and start lite-server
+
 ```
 $ npm install -g lite-server
 $ lite-server
 ```
 
+stop lite-server
 
-### Local Docker Dev mode
+```
+Ctrl+C
+```
+
+### Local Docker Dev Mode
 
 * Remix Solidity IDE http://<VMIP>:8080/
 * web3js example http://<VMIP>:8080/mount/
