@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>T107 Web3js</title>
+    <style>
+        body {
+            width: 50em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+    <!-- master version : 0.20.1 -->
+    <script src="https://rawgit.com/ethereum/web3.js/master/dist/web3.js"></script>
+    <script src="token-contract.js"></script>
+</head>
+
+<body>
+    <h2>TokenDeployment</h2>
+    <div id="app">
+        <p>metamask - rinkeby - unlock</p>
+        <h2>佈署代幣合約</h2>
+        <p>fromAccount : {{fromAccount}} <a :href="'https://rinkeby.etherscan.io/address/'+fromAccount" target="_blank">link</a></p>
+        <div>
+            <button v-on:click="getFromAccount">1. getFromAccount</button>
+            <button v-on:click="deployment">2. deployment</button>
+        </div>
+        <hr>
+        <h2>代幣餘額</h2>
+        <p>contractAddress : <input v-model="contractAddress" size="80"> <a :href="'https://rinkeby.etherscan.io/address/'+contractAddress"
+                target="_blank">link</a></p>
+        <p>balanceAddress : <input v-model="balanceAddress" size="80"></p>
+        <p>balance : {{balance}}</p>
+        <div>
+            <button v-on:click="balanceOf">balanceOf(balanceAddress)</button>
+        </div>
+        <hr>
+        <h2>發送代幣</h2>
+        <p>toAccount : <input v-model="toAccount" size="80"> <a :href="'https://rinkeby.etherscan.io/address/'+toAccount" target="_blank">link</a></p>
+        <p>tokenAmount : <input v-model="tokenAmount" size="80"></p>
+        <div>
+            <button v-on:click="transfer">transfer(toAccount,tokenAmount)</button>
+        </div>
+    </div>
+    <script>
+        var data = {
+            fromAccount: '0x0',
+            contractAddress: '0xF5Bd5Fe9cF920ca031179283f15e523e7A6f906a',
+            balanceAddress: '0x0',
+            toAccount: '0x67cC0309bc079A4524636B7835C70F5b71E24F54',
+            tokenAmount: 1999000,
+            balance: 0
+        };
+
+        var app = new Vue({
+            el: '#app',
+            data: data,
+            methods: {
+                getFromAccount: function () {
+                    data.fromAccount = web3.eth.accounts[0]
+                    data.balanceAddress = web3.eth.accounts[0]
+                },
+                deployment: function () {
+                    var tokenContract = deployNewFooToken();
+                },
+                balanceOf: function () {
+                    getBalanceOf(data.contractAddress, data.balanceAddress, function (err, result) {
+                        data.balance = result;
+                    });
+                },
+                transfer: function () {
+                    transfer(data.contractAddress, data.toAccount, data.tokenAmount, function (err, result) {
+                        console.log(err, result);
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

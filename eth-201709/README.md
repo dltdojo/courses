@@ -9,12 +9,6 @@
 * ssh client ( PuTTY http://www.putty.org/ )
 * https://github.com/dltdojo/courses
 
-```
-$ cd /home/dltdojo/smb
-$ git clone git@github.com:dltdojo/courses.git
-$ cd courses
-```
-
 ## Ethereum 介紹 
 
 * http://truffleframework.com/tutorials/ethereum-overview
@@ -37,7 +31,17 @@ Rinkeby Testnet
 * https://remix.ethereum.org
 * JavaScript VM
 
-## 更新課程程式碼
+## 下載課程程式碼
+
+新建
+
+```
+$ cd /home/dltdojo/smb
+$ git clone git@github.com:dltdojo/courses.git
+$ cd courses
+```
+
+更新
 
 ```
 $ cd /home/dltdojo/smb/courses

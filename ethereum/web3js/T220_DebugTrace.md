@@ -130,13 +130,19 @@ at block: 3 (Sat, 02 Sep 2017 03:57:34 UTC)
 
 ```
 
+### deploy test.sol 
+
 * remix : http://DEVIP:8080/
-* web3js api html : http://DEVIP:8080/mount/T220_Debug.html
 
 test.sol
 
 ```
 pragma solidity ^0.4.14;
+
+// MyWallet - Create
+// MyWallet - transfer(accounts[2], 19990000)
+// copy txid
+// mount/T220_Debug.html myweb3.debug.traceTransaction(txid)
 
 contract MyWallet {
     function transfer(address to) payable {
@@ -144,6 +150,9 @@ contract MyWallet {
     }
 }
 ```
+
+* web3js api html : http://DEVIP:8080/mount/T220_Debug.html
+
 
 ### stop all containers
 

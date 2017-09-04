@@ -77,7 +77,6 @@ read only = no
 $ sudo service smbd restart
 ```
 
-
 ### 配發單一位址的網路環境 
 
 * 設定值 - 網路 - 介面卡 1 - NAT
@@ -109,6 +108,8 @@ $ sudo reboot
 ```
 
 ### 查詢地址
+
+smb 地址 \\192.168.99.100\smb\
 
 ```
 $ ifconfig

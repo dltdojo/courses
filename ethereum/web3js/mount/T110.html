@@ -19,12 +19,6 @@
         // 
         web3.setProvider(new web3.providers.HttpProvider("http://" + window.location.hostname + ":8545"))
         var myweb3 = web3
-        // console test
-        // > web3.version
-        // > web3.providers
-        // > web3.currentProvider
-        // > web3.eth.getAccounts(console.log)
-        // > web3.eth.getAccounts().then(console.log)
         // web3.js 1.0 http://web3js.readthedocs.io/en/1.0/
         // http://web3js.readthedocs.io/en/1.0/callbacks-promises-events.html#callbacks-promises-events
         // 
@@ -33,5 +27,13 @@
 
 <body>
     <h1>T1109 Web3 1.0 beta</h1>
+    <h2>Open Developer Console</h2>
+    <pre>
+            > myweb3.version
+            > myweb3.providers
+            > myweb3.currentProvider
+            > myweb3.eth.getAccounts(console.log)
+            > myweb3.eth.getAccounts().then(console.log)
+    </pre>
 </body>
 </html>
