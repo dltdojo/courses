@@ -37,4 +37,9 @@ Rinkeby Testnet
 * https://remix.ethereum.org
 * JavaScript VM
 
-## 
+## 更新課程程式碼
+
+```
+$ cd /home/dltdojo/smb/courses
+$ git pull
+```
