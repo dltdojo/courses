@@ -1,0 +1,16 @@
+version: '2'
+services:
+  snode1:
+    image: dltdojo/swarmnet:1.6.7
+    command: /start.sh
+    volumes:
+      - ./siteroot:/opt/ddj/siteroot
+    ports:
+      - "8501:8501"
+  snode2:
+    image: dltdojo/swarmnet:1.6.7
+    command: /start.sh
+    volumes:
+      - ./siteroot:/opt/ddj/siteroot
+    ports:
+      - "8500:8500"

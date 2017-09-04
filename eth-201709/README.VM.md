@@ -159,3 +159,14 @@ $ cd courses/
 $ sudo npm install -g truffle
 $ sudo npm install -g ethereumjs-testrpc
 ```
+
+### Install IPFS on Ubuntu 16.04
+
+```
+$ sudo apt-get update
+$ sudo apt-get install golang-go -y
+$ cd /tmp
+$ wget https://dist.ipfs.io/go-ipfs/v0.4.10/go-ipfs_v0.4.10_linux-386.tar.gz
+$ tar xvfz go-ipfs_v0.4.10_linux-386.tar.gz
+$ sudo mv go-ipfs/ipfs /usr/local/bin/ipfs
+```
