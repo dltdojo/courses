@@ -1,6 +1,5 @@
 pragma solidity ^0.4.14;
-
-// 
+//
 // metamask - rinkeby testnet - unlock
 // Local Remix http://VMIP:8080/
 // Contract - Environment - Injected Web3
@@ -26,8 +25,9 @@ contract FooToken is StandardToken {
   }
 }
 
-// TODO
+// TODO 
 // 1. Create YourToken
+// rinkeby token contract url : https://rinkeby.etherscan.io/address/0xxxxxx
 // 2. Transfer YourToken
 // 3. YourToken - At Address
 // 4. balanceOf - account[0]

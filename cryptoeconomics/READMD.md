@@ -1,5 +1,6 @@
 ## cryptoeconomics
 
+* Problems · ethereum/wiki Wiki https://github.com/ethereum/wiki/wiki/Problems
 * Cryptoeconomics 101 – The Control https://thecontrol.co/cryptoeconomics-101-e5c883e9a8ff
 * Adam Smith’s Invisible hand - Wikipedia https://en.wikipedia.org/wiki/Invisible_hand
 * The Invisible Hand - YouTube https://www.youtube.com/watch?v=-CqMMxsN_7c

@@ -47,3 +47,33 @@ contract FooTime {
     }
     
 }
+
+// Ethereum blockchain timestamp
+// security - Can a contract safely rely on block.timestamp? - Ethereum Stack Exchange 
+// https://ethereum.stackexchange.com/questions/413/can-a-contract-safely-rely-on-block-timestamp/428
+// The Yellow Paper does not have any answer to "how much can it be off before it is rejected by other nodes". 
+// If block.timestamp is used, the only guarantee (equation 43) is that block.timestamp is greater than that of its parent. 
+
+// 以太坊 - 維基百科 https://zh.wikipedia.org/wiki/%E4%BB%A5%E5%A4%AA%E5%9D%8A
+
+// Ethereum Classic
+// July 20th, 2016, at block 1,920,000
+// https://etcchain.com/block/number/1920001
+
+// Ethereum 
+// Ethereum Block 1920001 Info https://etherscan.io/block/1920001
+
+
+
+
+// Bitcoin blockchain timestamp
+// Block timestamp - Bitcoin Wiki https://en.bitcoin.it/wiki/Block_timestamp
+// A timestamp is accepted as valid if it is greater than the median timestamp of previous 11 blocks, and less than the network-adjusted time + 2 hours. 
+// "Network-adjusted time" is the median of the timestamps returned by all nodes connected to you. 
+// As a result, block timestamps are not exactly accurate, and they do not even need to be in order. 
+// Block times are accurate only to within an hour or two.
+
+// pizza Bitcoin Transaction https://blockchain.info/tx/cca7507897abc89628f450e8b1e0c6fca4ec3f7b34cccf55f3f531c659ff4d79
+// Pizza for bitcoins?  https://bitcointalk.org/index.php?topic=137.0
+// 比特幣歷史 - 維基百科 https://zh.wikipedia.org/wiki/%E6%AF%94%E7%89%B9%E5%B9%A3%E6%AD%B7%E5%8F%B2
+// 時間信任來源 ? 論壇/維基百科/權威媒體/區塊鏈

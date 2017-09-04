@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web3js</title>
+    <style>
+        body {
+            width: 50em;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+    <!-- master version : 0.20.1 -->
+    <script src="https://rawgit.com/ethereum/web3.js/master/dist/web3.js"></script>
+    <script src="https://rawgit.com/ethereumjs/browser-builds/master/dist/ethereumjs-all.js"></script>
+</head>
+
+<body>
+    <h2>SendRawTx</h2>
+    <div id="app">
+        <p>PrivateKey Input : <input v-model="key" size="80"> </p>
+        <p>PrivateKey is: {{ key }}</p>
+        <p>1. Address = {{ address }} <a :href="'https://rinkeby.etherscan.io/address/'+address" target="_blank">link</a></p>
+        <p>2. Nonce = {{ nonce }}</p>
+        <div>
+            <button v-on:click="getAddress">1. getAddress</button>
+            <button v-on:click="getNonce">2. getNonce</button>
+        </div>
+        <hr>
+        <p>toAccount : <input v-model="toAccount" size="80"> </p>
+        <p>amount(ether) : <input v-model="amount" size="80"> </p>
+        <div>
+            <button v-on:click="sign">3. signRawTransaction</button>
+        </div>
+        <h3>SignRawTransaction(HEX)</h3>
+        <textarea rows="4" cols="80" readonly>{{signTxHex}}</textarea>
+        <h3>RawTransaction(JSON)</h3>
+        <textarea rows="4" cols="80" readonly>{{rawTx}}</textarea>
+        <h3>BroadToNetwork</h3>
+        <div>
+            <button v-on:click="sendSignedTx">4. sendSignedTx</button>
+        </div>
+    </div>
+    <script src="rinkeby-infura.js"></script>
+    <script>
+        var data = {
+            key: '0x43c46fd957c001c88a9206900e35325169ba60d398bdb6f1e317a1b62e27ac15',
+            toAccount: '0x7f36A05a8C81d6a89b282B333696e9274B3f43f0',
+            amount: 0.09,
+            address: '0x0',
+            nonce: '0x0',
+            signTxHex: '0x0',
+            rawTx: '{}',
+            blocks: []
+        };
+
+        var app = new Vue({
+            el: '#app',
+            data: data,
+            methods: {
+                getAddress: function () {
+                    data.address = getAddress(data.key)
+                },
+                getNonce: function () {
+                    data.nonce = getNonce(data.address)
+                },
+                sign: function () {
+                    var r = signRawTransaction(data.key, data.nonce, data.toAccount, data.amount)
+                    data.signTxHex = r.result
+                    data.rawTx = r.rawTx
+                },
+                sendSignedTx : function() {
+                    sendRawTx(data.signTxHex)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

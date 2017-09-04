@@ -3,6 +3,10 @@ pragma solidity ^0.4.14;
 // http://remix.ethereum.org/
 // http://solidity.readthedocs.io/en/develop/types.html#rational-and-integer-literals
 
+// http://solidity.readthedocs.io/en/develop/frequently-asked-questions.html#how-do-you-represent-double-float-in-solidity
+// How do you represent double/float in Solidity?
+// This is not yet possible.
+
 contract FooRationalLiterals {
     
     uint a = 987;

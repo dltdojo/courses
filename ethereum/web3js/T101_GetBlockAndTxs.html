@@ -31,36 +31,12 @@
             <hr/>
         </div>
     </div>
+    <script src="rinkeby-infura.js"></script>
     <script>
         var data = {
             message: 'Hello Web3.js 2017',
             blocks: []
         };
-
-        var Web3 = require('web3');
-        var web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/"));
-        console.log(web3.currentProvider);
-
-        function loadBlocks() {
-            // https://rinkeby.etherscan.io/address/0xc7cd2ac531c8c2af17acaf34dff5c0fc0d777267
-            // 823480 - Contract Creation
-            // 823492 - transfer token
-            [823480,823492].forEach(function (v) {
-                
-                // https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethgetblock
-                // web3.eth.getBlock(blockHashOrBlockNumber [, returnTransactionObjects] [, callback])
-                // https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethgettransaction
-
-                web3.eth.getBlock(v, true, function (error, result) {
-                    if (!error) {
-                        console.log(result)
-                        data.blocks.push(result)
-                    } else {
-                        console.error(error)
-                    }
-                })
-            })
-        }
         var app = new Vue({
             el: '#app',
             data: data,
