@@ -110,3 +110,8 @@ contract PaymentChannel {
 // alice = account[0] 
 // bob = account[1]
 // TestPayment
+
+// 
+// raiden-network/raiden: Raiden Network https://github.com/raiden-network/raiden
+// https://github.com/raiden-network/raiden/blob/master/raiden/smart_contracts/NettingChannelLibrary.sol#L98
+// 
