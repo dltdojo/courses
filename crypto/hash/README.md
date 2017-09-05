@@ -14,3 +14,10 @@ $ ethnode js/sha256.js
 $ npm i 
 $ node js/sha256.js
 ```
+
+### References
+
+* SHA-2 - 維基百科  https://zh.wikipedia.org/wiki/SHA-2
+* Google Online Security Blog: Announcing the first SHA1 collision https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html
+* SHA-3 - 維基百科 https://zh.wikipedia.org/wiki/SHA-3
+* SM3 - 維基百科 https://zh.wikipedia.org/wiki/SM3
