@@ -1,23 +1,34 @@
 version: '2'
 services:
-  node0:
+  base:
     image: dltdojo/clique:1.6.7
     environment:
       NET_NAME: "foonet"
-      NODE_DIR: "node0"
-      SIGNER: "YES"
     volumes:
       - ./data:/dltdojo
+    command: echo base
+  node0:
+    extends: base
+    environment:
+      NODE_DIR: "node0"
+      SIGNER: "YES"
     command: "./start.sh"
+    ports:
+      - "8545:8545"
   node1:
-    extends: node0
+    extends: base
+    command: "./start.sh"
     environment:
       NODE_DIR: "node1"
+    ports:
+      - "18545:8545"
   node2:
-    extends: node0
+    extends: base
+    command: "./start.sh"
     environment:
       NODE_DIR: "node2"
   node3:
-    extends: node0
+    extends: base
+    command: "./start.sh"
     environment:
       NODE_DIR: "node3"
