@@ -1,5 +1,6 @@
 ### 建立四個節點的Clique共識以太坊私有網路
 
+* 使用 go-ethereum 1.6 Clique PoA consensus 建立 Private chain (1)  https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8-go-ethereum-1-6-clique-poa-consensus-%E5%BB%BA%E7%AB%8B-private-chain-1-4d359f28feff
 * https://github.com/dltdojo/container/tree/master/dltdojo/clique
 * Network name: foonet
 * 4 nodes
