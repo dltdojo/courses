@@ -34,6 +34,7 @@
   * Global Variables
   * Debugging
   * https://github.com/dltdojo/courses/tree/master/ethereum/solidity
+  * https://github.com/dltdojo/courses/tree/master/ethereum/evm
 
 ## 5 智能合約實作 
   * ERC20 Token
@@ -79,7 +80,7 @@
 
 ## 12 以太坊開源專案實作
   * IPFS
-  * uport
+  * ENS
   * Ether Faucet
   * blockchain-anchor
   * Prediction markets
@@ -87,13 +88,7 @@
   * https://github.com/dltdojo/courses/tree/master/ethereum/dapps
   * https://github.com/dltdojo/courses/tree/master/ethereum/service
 
-## 13 以太坊設計概念
-  * 白皮書
-  * 黃皮書
-  * White Paper · ethereum https://github.com/ethereum/wiki/wiki/White-Paper
-  * The "Yellow Paper": Ethereum's formal specification https://github.com/ethereum/yellowpaper
-
-## 14 以太坊相關區塊鏈開源專案
+## 13 以太坊相關區塊鏈開源專案
   * Bitcoin
   * Mastering Bitcoin  http://chimera.labs.oreilly.com/books/1234000001802/ch02.html
   * https://github.com/dltdojo/courses/tree/master/bitcoin
@@ -101,3 +96,10 @@
   * Hyperledger Burrow https://github.com/hyperledger/burrow
   * Hyperledger Fabric https://github.com/hyperledger/fabric
   * https://github.com/dltdojo/courses/tree/master/fabric
+
+## 14 以太坊設計概念
+  * 白皮書
+  * 黃皮書
+  * White Paper · ethereum https://github.com/ethereum/wiki/wiki/White-Paper
+  * The "Yellow Paper": Ethereum's formal specification https://github.com/ethereum/yellowpaper
+

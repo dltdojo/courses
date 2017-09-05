@@ -158,6 +158,7 @@ $ git clone https://github.com/dltdojo/courses.git
 $ cd courses/
 $ sudo npm install -g truffle
 $ sudo npm install -g ethereumjs-testrpc
+$ sudo npm install -g blockchain-cli
 ```
 
 ### Install IPFS on Ubuntu 16.04

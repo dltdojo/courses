@@ -52,7 +52,6 @@ function calcHash160() {
 // RIPMD160 	8eb208f7e05d987a9b044a8e98c6b087f15a0bfc
 
 
-
 var result = {
     abc: {
         ripmd160 :  ethUtil.ripemd160(msg).toString('hex'),
