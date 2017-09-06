@@ -123,3 +123,9 @@ contract Bob is Base {
 }
 
 contract Carol is Base {}
+
+// TODO
+// Foo - Create - Alice - Create - testFooSend - testFooKill
+// Foo - Create - Bob - Create - testAliceFooSend
+// TestMsgSender
+//

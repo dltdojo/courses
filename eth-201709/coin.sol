@@ -20,7 +20,7 @@ contract Coin {
     }
 
     function send(address receiver, uint amount) {
-        require(balances[msg.sender] < amount);
+        require(balances[msg.sender] > amount);
         balances[msg.sender] -= amount;
         balances[receiver] += amount;
         Sent(msg.sender, receiver, amount);
