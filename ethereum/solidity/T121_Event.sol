@@ -28,7 +28,7 @@ contract FooEvent {
     function testEvent() payable {
         Event1(msg.value);
         Event2(this, msg.value);
-        Event2(this, msg.value);
+        Event3(this, msg.value);
     }
 
     // Etherscan EventLogs[2] - Matches Topics[1] - search address
