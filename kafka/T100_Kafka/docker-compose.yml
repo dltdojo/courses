@@ -1,12 +1,22 @@
 version: '2'
 services:
-  zookeeper:
+  zookeeper1:
     image: confluentinc/cp-zookeeper:3.3.0
     environment:
       - ZOOKEEPER_CLIENT_PORT=32181
-  kafka:
+  kafka1:
     image: confluentinc/cp-kafka:3.3.0
+    command: "bash -c \"sleep 8 && /etc/confluent/docker/run\""
     environment:
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:32181
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:29092
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper1:32181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:29092
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+  kafkacli:
+    image: confluentinc/cp-kafka:3.3.0
+    command: "tail -f /dev/null"
+  schemareg:
+    image: confluentinc/cp-schema-registry:3.3.0
+    environment:
+      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper1:32181
+      - SCHEMA_REGISTRY_HOST_NAME=schemareg
+      - SCHEMA_REGISTRY_LISTENERS=http://schemareg:8081
